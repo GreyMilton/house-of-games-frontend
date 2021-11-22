@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
+
 function DisplayReviews () {
   return (
     <section className="display-reviews">
-      <h1>DisplayReviews</h1> 
+      <h2>DisplayReviews</h2>
+      <Link to="/reviews/:review_id">Go to single review</Link>
     </section>);
 }
 

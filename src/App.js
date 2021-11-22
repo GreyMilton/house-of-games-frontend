@@ -1,14 +1,21 @@
 import Header from './components/Header';
 import './App.css';
-import DisplayReviews from './components/DisplayReviews';
-import SelectReviews from './components/SelectReviews';
+import CategoryPage from './components/CategoryPage';
+import { Route, Routes } from 'react-router';
+import LoginPage from './components/LoginPage';
+import ReviewPage from './components/ReviewPage';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <SelectReviews />
-      <DisplayReviews />
+      <Routes>
+        <Route path="/" element={<CategoryPage />} />
+        <Route path="/reviews" element={<CategoryPage />} />
+        <Route path="/reviews/all" element={<CategoryPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/reviews/:review_id" element={<ReviewPage />} />
+      </ Routes>
     </div>
   );
 }

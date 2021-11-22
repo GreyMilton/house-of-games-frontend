@@ -1,7 +1,10 @@
+import LoginForm from "./LoginForm";
+
 function LoginPage () {
   return (
     <section className="login-page">
-      <h1>LoginPage</h1> 
+      <h2>LoginPage</h2> 
+      <LoginForm />
     </section>);
 }
 

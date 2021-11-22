@@ -1,7 +1,7 @@
 function SelectReviews () {
   return (
     <section className="select-reviews">
-      <h1>SelectReviews</h1> 
+      <h2>SelectReviews</h2> 
     </section>);
 }
 

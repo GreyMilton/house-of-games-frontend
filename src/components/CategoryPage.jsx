@@ -1,7 +1,12 @@
+import DisplayReviews from "./DisplayReviews";
+import SelectReviews from "./SelectReviews";
+
 function CategoryPage () {
   return (
     <section className="category-page">
-      <h1>CategoryPage</h1> 
+      <h2>CategoryPage</h2> 
+      <SelectReviews />
+      <DisplayReviews />
     </section>);
 }
 
