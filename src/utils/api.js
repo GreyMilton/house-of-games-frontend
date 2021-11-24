@@ -6,6 +6,12 @@ const houseOfGamesApi = axios.create({
 
 export const getCategories = () => {
   return houseOfGamesApi.get('/categories').then((res) => {
-    console.log(res);
+    return (res.data.categories);
+  });
+};
+
+export const getReviewsByCategory = (category) => {
+  return houseOfGamesApi.get(`/reviews?category=${category}`).then((res) => {
+  console.log(res.data.reviews);
   });
 };

@@ -1,22 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getCategories } from "../utils/api";
+import { getCategories, getReviewsByCategory } from "../utils/api";
 
 function SelectReviews () {
+  const [allCategories, setAllCategories] = useState([{}]);
   const [currentCategory, setCurrentCategory] = useState("All reviews");
 
+  useEffect(() => {
+    getCategories().then((res) => {
+      setAllCategories(res);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, [])
+
+  useEffect(() => {
+    console.log("allCategories has been set:", allCategories);
+  }, [allCategories]);
+
   function handleChange(event) {
-    getCategories();
-    console.log("this is the event.target.value:", event.target.value);
+    getReviewsByCategory(event.target.value);
   }
 
   return (
     <section className="select-reviews">
       <select className="categories-select" onChange={handleChange}>
         <option value="All">All categories</option>
-        <option value="one">1</option>
-        <option value="two">2</option>
-        <option value="three">3</option>
+        <option value="strategy">Strategy</option>
+        <option value="hidden-roles">Hidden roles</option>
+        <option value="dexterity">Dexterity</option>
         <option value="four">4</option>
       </select>
       <select className="sort-by-select" onChange={handleChange}>
