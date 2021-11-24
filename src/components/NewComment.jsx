@@ -1,7 +1,12 @@
 function NewComment () {
   return (
     <section className="new-comment">
-      <h2>NewComment</h2> 
+      <form>
+        <label htmlFor="">New comment:
+          <input type="text" name="" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
     </section>);
 }
 

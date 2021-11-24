@@ -6,7 +6,6 @@ import DisplayComments from "./DisplayComments";
 function ReviewPage () {
   return (
     <section className="review-page">
-      <h2>ReviewPage</h2> 
       <ReviewDisplay />
       <NewComment />
       <SortComments />
