@@ -11,7 +11,9 @@ export const getCategories = () => {
 };
 
 export const getReviewsByCategory = (category) => {
-  return houseOfGamesApi.get(`/reviews?category=${category}`).then((res) => {
-  console.log(res.data.reviews);
+  let path = "/reviews";
+  if (category !== "all-categories") path += "?category=" + category;
+  return houseOfGamesApi.get(path).then((res) => {
+    return (res.data.reviews);
   });
 };

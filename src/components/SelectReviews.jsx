@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getCategories, getReviewsByCategory } from "../utils/api";
+import { getCategories } from "../utils/api";
 
-function SelectReviews () {
+function SelectReviews (props) {
   const [allCategories, setAllCategories] = useState([{}]);
-  const [currentCategory, setCurrentCategory] = useState("All reviews");
 
   useEffect(() => {
     getCategories().then((res) => {
@@ -19,13 +18,13 @@ function SelectReviews () {
   }, [allCategories]);
 
   function handleChange(event) {
-    getReviewsByCategory(event.target.value);
+    props.setCurrentCategory(event.target.value);
   }
 
   return (
     <section className="select-reviews">
       <select className="categories-select" onChange={handleChange}>
-        <option value="All">All categories</option>
+        <option value="all-categories">All categories</option>
         <option value="strategy">Strategy</option>
         <option value="hidden-roles">Hidden roles</option>
         <option value="dexterity">Dexterity</option>
