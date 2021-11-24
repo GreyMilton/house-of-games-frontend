@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getReviews } from "../utils/api";
 
 function DisplayReviews (props) {
-  const [currentReviews, setCurrentReviews] = useState([{review_id: 100, title: "loading..."}]);
+  const [currentReviews, setCurrentReviews] = useState([{review_id: 100, title: "loading...", review_body: "loading...", created_at: 213}]);
 
   useEffect(() => {
     console.log("currentReviews has been set:", currentReviews);
@@ -22,9 +22,21 @@ function DisplayReviews (props) {
     <section className="display-reviews">
       {currentReviews.map((review) => {
         return (
-          <p key={review.review_id} className="review-card">{review.title}<Link to={`/reviews/${review.review_id}`}>Go to single review</Link></p>
+          <section key={review.review_id} className="review-card">
+            <h2>{review.title}</h2>
+            <p>{review.review_body.length < 199 ? review.review_body : review.review_body.substring(0, 200) + "..."}</p>
+            <p>Reviewer: {review.owner}</p>
+            <p>At: {review.created_at}</p>
+            <p>Game designer: {review.designer}</p>
+            <p>Category: {review.category}</p>
+            <p>Comments: {review.comment_count}</p>
+            <p>Votes: {review.votes}</p>
+            <img className="review-image" src={review.review_img_url} alt={review.title} /><br/>
+            <Link to={`/reviews/${review.review_id}`}>View</Link>
+          </section >
         );
-      })}
+      })
+      }
     </section>);
 }
 

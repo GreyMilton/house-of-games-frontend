@@ -68,3 +68,9 @@
 .display-comments {
   border: solid palevioletred;
 }
+
+.review-image {
+  width: 80%;
+  max-width: 250px;
+  border-radius: 4px;
+}
