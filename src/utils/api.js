@@ -10,9 +10,13 @@ export const getCategories = () => {
   });
 };
 
-export const getReviewsByCategory = (category) => {
+export const getReviews = (category, sort, order) => {
   let path = "/reviews";
-  if (category !== "all-categories") path += "?category=" + category;
+  if (category !== "all-categories") {
+    path += `?category=${category}&sort_by=${sort}&order=${order}`;
+  } else {
+    path += `?sort_by=${sort}&order=${order}`
+  }
   return houseOfGamesApi.get(path).then((res) => {
     return (res.data.reviews);
   });

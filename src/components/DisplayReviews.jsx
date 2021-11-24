@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getReviewsByCategory } from "../utils/api";
+import { getReviews } from "../utils/api";
 
 function DisplayReviews (props) {
   const [currentReviews, setCurrentReviews] = useState([{}]);
@@ -10,12 +10,12 @@ function DisplayReviews (props) {
   }, [currentReviews])
 
   useEffect(() => {
-    getReviewsByCategory(props.currentCategory).then((res) => {
+    getReviews(props.currentCategory, props.currentSortBy, props.currentOrder).then((res) => {
       setCurrentReviews(res);
     }).catch((err) => {
       console.log(err);
     })
-  }, [props.currentCategory]);
+  }, [props.currentCategory, props.currentSortBy, props.currentOrder]);
 
 
   return (

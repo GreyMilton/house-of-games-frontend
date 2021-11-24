@@ -17,13 +17,21 @@ function SelectReviews (props) {
     console.log("allCategories has been set:", allCategories);
   }, [allCategories]);
 
-  function handleChange(event) {
+  function selectNewCategory(event) {
     props.setCurrentCategory(event.target.value);
+  }
+
+  function selectNewSortBy(event) {
+    props.setCurrentSortBy(event.target.value);
+  }
+
+  function selectNewOrder(event) {
+    props.setCurrentOrder(event.target.value);
   }
 
   return (
     <section className="select-reviews">
-      <select className="categories-select" onChange={handleChange}>
+      <select className="categories-select" onChange={selectNewCategory}>
         <option value="all-categories">All categories</option>
         {allCategories.map((category, index) => {
           return (
@@ -31,7 +39,7 @@ function SelectReviews (props) {
           )
         })}
       </select>
-      <select className="sort-by-select" onChange={handleChange}>
+      <select className="sort-by-select" onChange={selectNewSortBy}>
         <option value="created_at">Created at</option>
         <option value="title">Title</option>
         <option value="designer">Designer</option>
@@ -39,9 +47,9 @@ function SelectReviews (props) {
         <option value="votes">Votes</option>
         <option value="comment_count">Comments</option>
         <option value="length">Length</option>
-        <option value="category">Category</option>
+        {props.currentCategory === "all-categories" ? <option value="category">Category</option> : null}
       </select>
-      <select className="order-select" onChange={handleChange}>
+      <select className="order-select" onChange={selectNewOrder}>
         <option value="desc">Descending</option>
         <option value="asc">Ascending</option>
       </select>
