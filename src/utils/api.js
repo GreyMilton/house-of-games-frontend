@@ -21,3 +21,9 @@ export const getReviews = (category, sort, order) => {
     return (res.data.reviews);
   });
 };
+
+export const getReviewById = (reviewId) => {
+  return houseOfGamesApi.get(`/reviews/${reviewId}`).then((res) => {
+    return (res.data.review);
+  })
+}
