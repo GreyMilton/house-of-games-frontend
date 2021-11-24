@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getReviews } from "../utils/api";
 
 function DisplayReviews (props) {
-  const [currentReviews, setCurrentReviews] = useState([{}]);
+  const [currentReviews, setCurrentReviews] = useState([{review_id: 100, title: "loading..."}]);
 
   useEffect(() => {
     console.log("currentReviews has been set:", currentReviews);
@@ -20,18 +20,11 @@ function DisplayReviews (props) {
 
   return (
     <section className="display-reviews">
-      <p className="review-card">Review card 1 <Link to="/reviews/:review_id">Go to single review</Link></p>
-      <p className="review-card">Review card 2</p>
-      <p className="review-card">Review card 3</p>
-      <p className="review-card">Review card 4</p>
-      <p className="review-card">Review card 5</p>
-      <p className="review-card">Review card 6</p>
-      <p className="review-card">Review card 7</p>
-      <p className="review-card">Review card 8</p>
-      <p className="review-card">Review card 9</p>
-      <p className="review-card">Review card 10</p>
-      <p className="review-card">Review card 11</p>
-
+      {currentReviews.map((review) => {
+        return (
+          <p key={review.review_id} className="review-card">{review.title}<Link to={`/reviews/${review.review_id}`}>Go to single review</Link></p>
+        );
+      })}
     </section>);
 }
 
