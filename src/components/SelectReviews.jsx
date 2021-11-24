@@ -25,11 +25,18 @@ function SelectReviews (props) {
     <section className="select-reviews">
       <select className="categories-select" onChange={handleChange}>
         <option value="all-categories">All categories</option>
+        {allCategories.map((category, index) => {
+          return (
+            <option key={index} value={category.slug}>{category.slug}</option>
+          );
+        })}
+      </select>
+        {/* <option value="all-categories">All categories</option>
         <option value="strategy">Strategy</option>
         <option value="hidden-roles">Hidden roles</option>
         <option value="dexterity">Dexterity</option>
-        <option value="four">4</option>
-      </select>
+        <option value="four">4</option> */}
+      {/* </select>
       <select className="sort-by-select" onChange={handleChange}>
         <option value="created_at">Created at</option>
         <option value="one">1</option>
@@ -40,7 +47,7 @@ function SelectReviews (props) {
       <select className="order-select" onChange={handleChange}>
         <option value="desc">Descending</option>
         <option value="asc">Ascending</option>
-      </select>
+      </select> */}
     </section>);
 }
 
