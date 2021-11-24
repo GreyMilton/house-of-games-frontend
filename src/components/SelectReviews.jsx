@@ -28,27 +28,25 @@ function SelectReviews (props) {
         {allCategories.map((category, index) => {
           return (
             <option key={index} value={category.slug}>{category.slug}</option>
-          );
+          )
         })}
       </select>
-        {/* <option value="all-categories">All categories</option>
-        <option value="strategy">Strategy</option>
-        <option value="hidden-roles">Hidden roles</option>
-        <option value="dexterity">Dexterity</option>
-        <option value="four">4</option> */}
-      {/* </select>
       <select className="sort-by-select" onChange={handleChange}>
         <option value="created_at">Created at</option>
-        <option value="one">1</option>
-        <option value="two">2</option>
-        <option value="three">3</option>
-        <option value="four">4</option>
+        <option value="title">Title</option>
+        <option value="designer">Designer</option>
+        <option value="owner">Owner</option>
+        <option value="votes">Votes</option>
+        <option value="comment_count">Comments</option>
+        <option value="length">Length</option>
+        <option value="category">Category</option>
       </select>
       <select className="order-select" onChange={handleChange}>
         <option value="desc">Descending</option>
         <option value="asc">Ascending</option>
-      </select> */}
-    </section>);
+      </select>
+    </section>
+    );
 }
 
 export default SelectReviews ;
