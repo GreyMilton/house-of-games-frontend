@@ -49,6 +49,33 @@
   border: solid orange;
 }
 
+.strategy{
+  background-color: rgb(217, 252, 217);
+}
+.hidden-roles{
+  background-color:lavenderblush;
+}
+
+.dexterity {
+  background-color: rgb(252, 244, 180);
+}
+
+.push-your-luck {
+  background-color: lightcyan;
+}
+
+.roll-and-write {
+  background-color: rgb(255, 209, 148);
+}
+
+.deck-building {
+  background-color: rgb(208, 225, 250);
+}
+
+.engine-building {
+  background-color: rgb(226, 226, 226);
+}
+
 .review-page {
   border: solid teal;
 }

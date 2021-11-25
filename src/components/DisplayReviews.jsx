@@ -22,7 +22,7 @@ function DisplayReviews (props) {
     <section className="display-reviews">
       {currentReviews.map((review) => {
         return (
-          <section key={review.review_id} className="review-card">
+          <section key={review.review_id} className={"review-card " + review.category}>
             <h2>{review.title}</h2>
             <p>{review.review_body.length < 199 ? review.review_body : review.review_body.substring(0, 200) + "..."}</p>
             <p>Reviewer: {review.owner}</p>
