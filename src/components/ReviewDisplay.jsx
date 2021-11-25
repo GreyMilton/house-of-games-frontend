@@ -1,41 +1,22 @@
-import { useEffect, useState } from "react";
-import { getReviewById } from "../utils/api";
+
 import { capitaliseAndReplaceDashes } from "../utils/string-utils"
 
 function ReviewDisplay (props) {
-  const [currentReview, setCurrentReview] = useState();
-  const [reviewDisplayIsLoading, setReviewDisplayIsLoading] = useState(true);
-
-  useEffect(() => {
-    console.log("reviewDisplayIsLoading:", reviewDisplayIsLoading);
-  }, [reviewDisplayIsLoading])
-
-  useEffect(() => {
-    console.log("currentReview has been set:", currentReview);
-  }, [currentReview])
-
-  useEffect(() => {
-    setReviewDisplayIsLoading(true);
-    getReviewById(props.params.review_id).then((res) => {
-      setCurrentReview(res);
-      setReviewDisplayIsLoading(false);
-    }).catch((err) => {console.log(err)});
-  }, [])
-
+  
   return (
     <section className="review-display">
-      {reviewDisplayIsLoading ? <p className="loading">loading...</p> : null}
-      { currentReview ?
+      {props.reviewDisplayIsLoading ? <p className="loading">loading...</p> : null}
+      { props.currentReview ?
       <>
-        <img className="review-image" src={currentReview.review_img_url} alt={currentReview.title} /><br/>
-        <h2>{currentReview.title }</h2>
-        <p>{currentReview.review_body}</p>
-        <p>Reviewer: {currentReview.owner}</p>
-        <p>At: {currentReview.created_at}</p>
-        <p>Game designer: {currentReview.designer}</p>
-        <p>Category: {capitaliseAndReplaceDashes(currentReview.category)}</p>
-        <p>Votes: {currentReview.votes} <button onClick={() =>{console.log("up")}}>+</button><button onClick={() => {console.log("down")}}>-</button></p>
-        <p>Comments: {currentReview.comment_count}</p>
+        <img className="review-image" src={props.currentReview.review_img_url} alt={props.currentReview.title} /><br/>
+        <h2>{props.currentReview.title }</h2>
+        <p>{props.currentReview.review_body}</p>
+        <p>Reviewer: {props.currentReview.owner}</p>
+        <p>At: {props.currentReview.created_at}</p>
+        <p>Game designer: {props.currentReview.designer}</p>
+        <p>Category: {capitaliseAndReplaceDashes(props.currentReview.category)}</p>
+        <p>Votes: {props.currentReview.votes} <button onClick={() =>{console.log("up")}}>+</button><button onClick={() => {console.log("down")}}>-</button></p>
+        <p>Comments: {props.currentReview.comment_count}</p>
       </>
       : null}
     </section>);
