@@ -16,7 +16,6 @@ function ReviewDisplay (props) {
         <p>Game designer: {props.currentReview.designer}</p>
         <p>Category: {capitaliseAndReplaceDashes(props.currentReview.category)}</p>
         <p>Votes: {props.currentReview.votes} <button onClick={() =>{console.log("up")}}>+</button><button onClick={() => {console.log("down")}}>-</button></p>
-        <p>Comments: {props.currentReview.comment_count}</p>
       </>
       : null}
     </section>);
