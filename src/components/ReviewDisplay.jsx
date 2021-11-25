@@ -5,6 +5,11 @@ import { getReviewById } from "../utils/api";
 function ReviewDisplay () {
   const params = useParams();
   const [currentReview, setCurrentReview] = useState(params.review_id);
+  const [reviewDisplayIsLoading, setReviewDisplayIsLoading] = useState(true);
+
+  useEffect(() => {
+    console.log("reviewDisplayIsLoading:", reviewDisplayIsLoading);
+  }, [reviewDisplayIsLoading])
 
   useEffect(() => {
     console.log("currentReview has been set:", currentReview);
@@ -17,11 +22,6 @@ function ReviewDisplay () {
       setReviewDisplayIsLoading(false);
     }).catch((err) => {console.log(err)});
   }, [])
-
-  const [reviewDisplayIsLoading, setReviewDisplayIsLoading] = useState(true);
-  useEffect(() => {
-    console.log("reviewDisplayIsLoading:", reviewDisplayIsLoading);
-  }, [reviewDisplayIsLoading])
 
   return (
     <section className="review-display">
