@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import { getReviewById } from "../utils/api";
 import { capitaliseAndReplaceDashes } from "../utils/string-utils"
 
-function ReviewDisplay () {
+function ReviewDisplay (props) {
   const [currentReview, setCurrentReview] = useState();
   const [reviewDisplayIsLoading, setReviewDisplayIsLoading] = useState(true);
-  const params = useParams();
 
   useEffect(() => {
     console.log("reviewDisplayIsLoading:", reviewDisplayIsLoading);
@@ -18,7 +16,7 @@ function ReviewDisplay () {
 
   useEffect(() => {
     setReviewDisplayIsLoading(true);
-    getReviewById(params.review_id).then((res) => {
+    getReviewById(props.params.review_id).then((res) => {
       setCurrentReview(res);
       setReviewDisplayIsLoading(false);
     }).catch((err) => {console.log(err)});

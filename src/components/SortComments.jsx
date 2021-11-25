@@ -1,21 +1,26 @@
-function SortComments () {
+import { useEffect, useState } from "react";
 
-  function handleChange(event) {
-    console.log("this is the event.target.value:", event.target.value);
+function SortComments (props) {
+
+  function selectNewCommentsSortBy(event) {
+    props.setCurrentCommentsSortBy(event.target.value);
+  }
+
+  function selectNewCommentsOrder(event) {
+    props.setCurrentCommentsOrder(event.target.value);
   }
 
   return (
     <section className="sort-comments">
-      {/* <span>Sort comments: </span> */}
       <label>Sort comments:
-        <select className="sort-by-select" onChange={handleChange}>
+        <select className="sort-by-select" onChange={selectNewCommentsSortBy}>
           <option value="created_at">Created at</option>
-          <option value="one">1</option>
-          <option value="two">2</option>
-          <option value="three">3</option>
-          <option value="four">4</option>
+          <option value="votes">Votes</option>
+          <option value="author">Author</option>
+          <option value="body">Body</option>
+          <option value="comment_id">Comment id</option>
         </select>
-        <select className="order-select" onChange={handleChange}>
+        <select className="order-select" onChange={selectNewCommentsOrder}>
           <option value="desc">Descending</option>
           <option value="asc">Ascending</option>
         </select>

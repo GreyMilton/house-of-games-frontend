@@ -27,3 +27,9 @@ export const getReviewById = (reviewId) => {
     return (res.data.review);
   })
 }
+
+export const getCommentsByReviewId = (reviewId) => {
+  return houseOfGamesApi.get(`/reviews/${reviewId}/comments`).then((res) => {
+    return (res.data.comments);
+  })
+}
