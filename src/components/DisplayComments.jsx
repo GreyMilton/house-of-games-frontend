@@ -4,14 +4,18 @@ import { sortAndOrderArrayOfObjects } from '../utils/array-utils'
 
 function DisplayComments (props) {
   const [currentComments, setCurrentComments] = useState();
+  const [commentsIsLoading, setCommentsIsLoading] = useState(true);
 
   useEffect(() => {
+    setCommentsIsLoading(true);
     getCommentsByReviewId(props.params.review_id).then((res) => {
-      console.log(res);
+      console.log("res:", res);
       setCurrentComments(res);
+      setCommentsIsLoading(false);
     })
     .catch((err) => {
       console.log(err);
+      setCommentsIsLoading(false);
     })
   },[])
 
@@ -21,6 +25,7 @@ function DisplayComments (props) {
 
   return (
     <section className="display-comments">
+      {commentsIsLoading && <p>loading...</p>}
       {currentComments && currentComments.map((comment) => {
         return (
           <section key={comment.comment_id} className="comment-card">
