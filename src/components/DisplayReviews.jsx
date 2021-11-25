@@ -3,24 +3,36 @@ import { Link } from "react-router-dom";
 import { getReviews } from "../utils/api";
 
 function DisplayReviews (props) {
-  const [currentReviews, setCurrentReviews] = useState([{review_id: 100, title: "loading...", review_body: "loading...", created_at: 213}]);
+  const [currentReviews, setCurrentReviews] = useState();
+
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     console.log("currentReviews has been set:", currentReviews);
   }, [currentReviews])
 
   useEffect(() => {
+    console.log("isLoading:", isLoading)
+  }, [isLoading])
+
+  useEffect(() => {
+    setIsLoading(true)
     getReviews(props.currentCategory, props.currentSortBy, props.currentOrder).then((res) => {
       setCurrentReviews(res);
+      setIsLoading(false);
     }).catch((err) => {
       console.log(err);
+      setIsLoading(false);
     })
   }, [props.currentCategory, props.currentSortBy, props.currentOrder]);
 
 
   return (
+    <>
+    {isLoading ? <p className="loading">loading...</p> : null}
     <section className="display-reviews">
-      {currentReviews.map((review) => {
+
+      { currentReviews ? currentReviews.map((review) => {
         return (
           <section key={review.review_id} className={"review-card " + review.category}>
             <h2>{review.title}</h2>
@@ -36,8 +48,9 @@ function DisplayReviews (props) {
           </section >
         );
       })
-      }
-    </section>);
+      : null}
+    </section>
+    </>);
 }
 
 export default DisplayReviews ;
