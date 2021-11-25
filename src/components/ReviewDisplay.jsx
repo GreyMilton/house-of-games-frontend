@@ -1,9 +1,32 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { getReviewById } from "../utils/api";
 
-function ReviewDisplay (props) {
+function ReviewDisplay () {
+  const params = useParams();
+  const [currentReview, setCurrentReview] = useState(params.review_id);
+
+  useEffect(() => {
+    console.log("currentReview has been set:", currentReview);
+  }, [currentReview])
+
+  useEffect(() => {
+    setReviewDisplayIsLoading(true);
+    getReviewById(currentReview).then((res) => {
+      setCurrentReview(res);
+      setReviewDisplayIsLoading(false);
+    }).catch((err) => {console.log(err)});
+  }, [])
+
+  const [reviewDisplayIsLoading, setReviewDisplayIsLoading] = useState(true);
+  useEffect(() => {
+    console.log("reviewDisplayIsLoading:", reviewDisplayIsLoading);
+  }, [reviewDisplayIsLoading])
 
   return (
     <section className="review-display">
-      <h2>{props.currentReview && props.currentReview.title }</h2> 
+      {reviewDisplayIsLoading ? <p className="loading">loading...</p> : null}
+       <h2>{currentReview && currentReview.title }</h2> 
     </section>);
 }
 
