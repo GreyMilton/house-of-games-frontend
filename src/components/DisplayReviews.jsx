@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getReviews } from "../utils/api";
+import { capitaliseAndReplaceDashes } from "../utils/string-utils";
 
 function DisplayReviews (props) {
   const [currentReviews, setCurrentReviews] = useState();
@@ -40,7 +41,7 @@ function DisplayReviews (props) {
             <p>Reviewer: {review.owner}</p>
             <p>At: {review.created_at}</p>
             <p>Game designer: {review.designer}</p>
-            <p>Category: {review.category}</p>
+            <p>Category: {capitaliseAndReplaceDashes(review.category)}</p>
             <p>Comments: {review.comment_count}</p>
             <p>Votes: {review.votes}</p>
             <img className="review-image" src={review.review_img_url} alt={review.title} /><br/>
