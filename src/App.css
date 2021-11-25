@@ -45,7 +45,7 @@
 
 .review-card {
   margin: 0;
-  padding: 30px;
+  padding: 7%;
   border: solid orange;
 }
 
@@ -81,6 +81,8 @@
 }
 
 .review-display {
+  margin: 0;
+  padding: 7%;
   border: solid yellowgreen;
 }
 
