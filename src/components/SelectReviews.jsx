@@ -37,7 +37,7 @@ function SelectReviews (props) {
         <select name="select-category" className="categories-select" onChange={selectNewCategory}>
           {allCategories.map((category, index) => {
             return (
-              <option key={category.slug} value={category.slug}>{category.slug}</option>
+              <option key={category.slug} value={category.slug}>{category.slug[0].toUpperCase() + category.slug.slice(1).replaceAll("-", " ")}</option>
             )
           })}
         </select>
