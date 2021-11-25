@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCategories } from "../utils/api";
+import { capitaliseAndReplaceDashes } from "../utils/string-utils";
 
 function SelectReviews (props) {
   const [allCategories, setAllCategories] = useState([{slug: "all-categories"}]);
@@ -37,7 +38,7 @@ function SelectReviews (props) {
         <select name="select-category" className="categories-select" onChange={selectNewCategory}>
           {allCategories.map((category, index) => {
             return (
-              <option key={category.slug} value={category.slug}>{category.slug[0].toUpperCase() + category.slug.slice(1).replaceAll("-", " ")}</option>
+              <option key={category.slug} value={category.slug}>{capitaliseAndReplaceDashes(category.slug)}</option>
             )
           })}
         </select>
