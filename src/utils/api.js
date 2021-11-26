@@ -43,3 +43,7 @@ export const postNewComment = (reviewId, user, body) => {
     return (res.data.comment);
   })
 }
+
+export const deleteComment = (commentId) => {
+  return houseOfGamesApi.delete(`comments/${commentId}`);
+}

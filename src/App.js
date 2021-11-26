@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { UserContext } from './contexts/user-context';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState("weegemBump")
+  const [currentUser, setCurrentUser] = useState("weegembump")
   useEffect(() => {
     console.log("currentUser has been set:", currentUser);
   }, [currentUser])

@@ -17,7 +17,13 @@ function NewComment (props) {
   }
 
   const submitNewComment = (event) => {
-    postNewComment(props.params.review_id, currentUser, newCommentDraft);
+    event.preventDefault();
+    postNewComment(props.params.review_id, currentUser, newCommentDraft).then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(err)
+    });
   }
 
   return (
