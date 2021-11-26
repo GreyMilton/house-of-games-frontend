@@ -19,4 +19,29 @@ exports.sortAndOrderArrayOfObjects = (array, key, order) => {
   }
   newArray.sort(compareFunction);
   return newArray;
-}
+};
+
+exports.sortAndOrderArrayOfObjectsByLengthOfGivenValue = (array, key, order) => {
+
+  const newArray = array.map((object)=> {
+    return { ...object };
+  });
+
+  let orderMultiplier = -1;
+  if (order === 'asc') orderMultiplier = 1;
+  
+  function compareFunction (objA, objB) {
+
+    if (objA[key].toString().length < objB[key].toString().length) {
+      return -1 * orderMultiplier;
+    } else if ((objA[key].toString().length > objB[key].toString().length)) {
+      return 1 * orderMultiplier;
+    } else {
+      return 0;
+    }
+  }
+  newArray.sort(compareFunction);
+  return newArray;
+
+
+};
