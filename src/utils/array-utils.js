@@ -1,3 +1,22 @@
-exports.sortAndOrderArrayOfObjects = (array, sort, order) => {
-  console.log("function to be written");
+exports.sortAndOrderArrayOfObjects = (array, key, order) => {
+  
+  const newArray = array.map((object)=> {
+    return { ...object };
+  });
+
+  let orderMultiplier = -1;
+  if (order === 'asc') orderMultiplier = 1;
+  
+  function compareFunction (objA, objB) {
+
+    if (objA[key] < objB[key]) {
+      return -1 * orderMultiplier;
+    } else if ((objA[key] > objB[key])) {
+      return 1 * orderMultiplier;
+    } else {
+      return 0;
+    }
+  }
+  newArray.sort(compareFunction);
+  return newArray;
 }
