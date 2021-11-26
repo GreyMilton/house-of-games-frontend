@@ -45,5 +45,12 @@ export const postNewComment = (reviewId, user, body) => {
 }
 
 export const deleteComment = (commentId) => {
-  return houseOfGamesApi.delete(`comments/${commentId}`);
+  return houseOfGamesApi.delete(`/comments/${commentId}`);
+}
+
+export const patchReview = (reviewId, newVotes) => {
+  const patchReviewBody = { inc_votes: newVotes }
+  return houseOfGamesApi.patch(`/reviews/${reviewId}`, patchReviewBody).then((res) => {
+    return (res.data.review);
+  })
 }
