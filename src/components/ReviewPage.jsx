@@ -27,7 +27,7 @@ function ReviewPage () {
       setCurrentReview(res);
       setReviewDisplayIsLoading(false);
     }).catch((err) => {console.log(err)});
-  }, [])
+  }, [params.review_id])
 
   const [currentCommentsSortBy, setCurrentCommentsSortBy] = useState("created_at");
   const [currentCommentsOrder, setCurrentCommentsOrder] = useState("desc");
@@ -45,7 +45,7 @@ function ReviewPage () {
       <ReviewDisplay params={params} reviewDisplayIsLoading={reviewDisplayIsLoading} currentReview={currentReview} />
       {currentReview && <h3 className="comments-count">This review has {currentReview.comment_count} comment{currentReview.comment_count !== 1 ? 's' : null}.</h3>}
       <NewComment params={params}/>
-      {currentReview && currentReview.comments > 1 ? <SortComments setCurrentCommentsSortBy={setCurrentCommentsSortBy} setCurrentCommentsOrder={setCurrentCommentsOrder} /> : null}
+      {(currentReview && currentReview.comment_count > 1) ? <SortComments setCurrentCommentsSortBy={setCurrentCommentsSortBy} setCurrentCommentsOrder={setCurrentCommentsOrder} /> : null}
       <DisplayComments params={params} currentCommentsSortBy={currentCommentsSortBy} currentCommentsOrder={currentCommentsOrder} />
     </section>);
 }

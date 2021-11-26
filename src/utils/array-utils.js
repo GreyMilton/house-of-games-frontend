@@ -44,6 +44,4 @@ exports.sortAndOrderArrayOfObjectsByLengthOfGivenValue = (array, key, order) => 
   }
   newArray.sort(compareFunction);
   return newArray;
-
-
 };

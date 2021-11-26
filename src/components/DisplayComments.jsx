@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCommentsByReviewId } from "../utils/api"
-import { sortAndOrderArrayOfObjects } from '../utils/array-utils'
+import { sortAndOrderArrayOfObjects } from "../utils/array-utils"
 
 function DisplayComments (props) {
   const [currentComments, setCurrentComments] = useState();
@@ -17,10 +17,13 @@ function DisplayComments (props) {
       console.log(err);
       setCommentsIsLoading(false);
     })
-  },[])
+  },[props.params.review_id])
 
   useEffect(() => {
-    sortAndOrderArrayOfObjects(currentComments, props.currentCommentsSortBy, props.currentCommentsOrder);
+    setCurrentComments((prevCurrentComments) => {
+      const newCurrentComments = sortAndOrderArrayOfObjects(prevCurrentComments, props.currentCommentsSortBy, props.currentCommentsOrder);
+      return newCurrentComments;
+    })
   }, [props.currentCommentsSortBy, props.currentCommentsOrder])
 
   return (
