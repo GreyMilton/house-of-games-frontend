@@ -18,7 +18,6 @@ function SortComments (props) {
           <option value="votes">Votes</option>
           <option value="author">Author</option>
           <option value="body">Body</option>
-          <option value="comment_id">Comment id</option>
         </select>
         <select className="order-select" onChange={selectNewCommentsOrder}>
           <option value="desc">Descending</option>
