@@ -49,8 +49,10 @@ export const deleteComment = (commentId) => {
 }
 
 export const patchReview = (reviewId, newVotes) => {
-  const patchReviewBody = { inc_votes: newVotes }
+  const patchReviewBody = { "inc_votes": newVotes }
+  console.log(patchReviewBody);
   return houseOfGamesApi.patch(`/reviews/${reviewId}`, patchReviewBody).then((res) => {
+    console.log(res);
     return (res.data.review);
   })
 }

@@ -1,25 +1,48 @@
 
 import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
+import { patchReview } from "../utils/api";
 import { capitaliseAndReplaceDashes } from "../utils/string-utils"
 
 function ReviewDisplay (props) {
   const [newVotesCount, setNewVotesCount] = useState(0);
 
-  useEffect(() => {
-    console.log("newVotesCount has been set:", newVotesCount)
-  }, [newVotesCount])
+  // useEffect(() => {
+  //   if (newVotesCount !== 0) {
+  //     patchReview(props.params.review_id, newVotesCount).then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch ((err) => {
+  //       console.log(err);
+  //     })
+  //   }
+  // }, [newVotesCount])
 
-  function addVotesToReview () {
+  function addVotesToReview (event) {
+    event.preventDefault();
     setNewVotesCount((prevCount) => {
       return prevCount + 1;
-    })
+    });
+    patchReview(props.params.review_id, 1).then((res) => {
+      console.log(res);
+      })
+      .catch ((err) => {
+      console.log(err);
+      });
   }
 
-  function subtractVotesFromReview () {
+  function subtractVotesFromReview (event) {
+    event.preventDefault();
     setNewVotesCount((prevCount) => {
       return prevCount - 1;
-    })
+    });
+    patchReview(props.params.review_id, -1).then((res) => {
+      console.log(res);
+      })
+      .catch ((err) => {
+      console.log(err);
+      });
+
   }
 
   return (
