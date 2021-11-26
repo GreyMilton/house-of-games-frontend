@@ -33,3 +33,13 @@ export const getCommentsByReviewId = (reviewId) => {
     return (res.data.comments);
   })
 }
+
+export const postNewComment = (reviewId, user, body) => {
+  const postCommentBody = {
+    username: user,
+    body: body
+  }
+  return houseOfGamesApi.post(`/reviews/${reviewId}/comments`, postCommentBody).then((res) => {
+    return (res.data.comment);
+  })
+}
