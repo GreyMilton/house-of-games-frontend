@@ -6,6 +6,11 @@ describe('sortAndOrderArrayOfObjects', () => {
     expect(sortAndOrderArrayOfObjects([], 'created_at', 'asc')).toEqual([]);
     expect(sortAndOrderArrayOfObjects([], 'votes', 'desc')).toEqual([]);
   });
+  test('returns an empty array when passed nothing, or undefined instead of an array', () => {
+    expect(sortAndOrderArrayOfObjects()).toEqual([]);
+    expect(sortAndOrderArrayOfObjects(undefined, 'created_at', 'asc')).toEqual([]);
+    expect(sortAndOrderArrayOfObjects(undefined, 'votes', 'desc')).toEqual([]);
+  });
   test('returns a copy of the same array when passed a single element (object) array', () => {
     expect(sortAndOrderArrayOfObjects([ {body: "dsajhflkjsadhf", votes: 234, created_at: "33333333"}], 'body', 'asc')).toEqual([{body: "dsajhflkjsadhf", votes: 234, created_at: "33333333"}]);
   });
@@ -1414,6 +1419,11 @@ describe('sortAndOrderArrayOfObjectsByLengthOfGivenValue', () => {
     expect(sortAndOrderArrayOfObjectsByLengthOfGivenValue([])).toEqual([]);
     expect(sortAndOrderArrayOfObjectsByLengthOfGivenValue([], 'body', 'asc')).toEqual([]);
     expect(sortAndOrderArrayOfObjectsByLengthOfGivenValue([], 'author', 'desc')).toEqual([]);
+  });
+  test('returns an empty array when passed nothing, or undefined instead of an array', () => {
+    expect(sortAndOrderArrayOfObjectsByLengthOfGivenValue()).toEqual([]);
+    expect(sortAndOrderArrayOfObjectsByLengthOfGivenValue(undefined, 'created_at', 'asc')).toEqual([]);
+    expect(sortAndOrderArrayOfObjectsByLengthOfGivenValue(undefined, 'votes', 'desc')).toEqual([]);
   });
   test('returns a copy of the same array when passed a single element (object) array', () => {
     expect(sortAndOrderArrayOfObjectsByLengthOfGivenValue([ {body: "dsajhflkjsadhf", votes: 234, created_at: "33333333"}], 'body', 'asc')).toEqual([{body: "dsajhflkjsadhf", votes: 234, created_at: "33333333"}]);

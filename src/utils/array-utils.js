@@ -1,5 +1,6 @@
 exports.sortAndOrderArrayOfObjects = (array, key, order) => {
-  
+  if (!array) return [];
+
   const newArray = array.map((object)=> {
     return { ...object };
   });
@@ -22,6 +23,7 @@ exports.sortAndOrderArrayOfObjects = (array, key, order) => {
 };
 
 exports.sortAndOrderArrayOfObjectsByLengthOfGivenValue = (array, key, order) => {
+  if (!array) return [];
 
   const newArray = array.map((object)=> {
     return { ...object };
