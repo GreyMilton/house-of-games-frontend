@@ -15,9 +15,9 @@ function SortComments (props) {
       <label>Sort comments:
         <select className="sort-by-select" onChange={selectNewCommentsSortBy}>
           <option value="created_at">Created at</option>
-          <option value="votes">Votes</option>
           <option value="author">Author</option>
           <option value="body">Body</option>
+          <option value="votes">Votes</option>
         </select>
         <select className="order-select" onChange={selectNewCommentsOrder}>
           <option value="desc">Descending</option>

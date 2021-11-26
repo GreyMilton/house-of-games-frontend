@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getReviews } from "../utils/api";
+import { sortAndOrderArrayOfObjectsByLengthOfGivenValue } from "../utils/array-utils";
 import { capitaliseAndReplaceDashes } from "../utils/string-utils";
 
 function DisplayReviews (props) {
@@ -19,8 +20,12 @@ function DisplayReviews (props) {
   useEffect(() => {
     setIsLoading(true)
     getReviews(props.currentCategory, props.currentSortBy, props.currentOrder).then((res) => {
-      setCurrentReviews(res);
       setIsLoading(false);
+      if (props.currentSortBy !== "review_body") setCurrentReviews(res);
+      else {
+        const arraySortedByLength = sortAndOrderArrayOfObjectsByLengthOfGivenValue(res, props.currentSortBy, props.currentOrder);
+        setCurrentReviews(arraySortedByLength);
+      }
     }).catch((err) => {
       console.log(err);
       setIsLoading(false);

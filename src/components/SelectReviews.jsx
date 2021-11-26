@@ -50,6 +50,7 @@ function SelectReviews (props) {
           <option value="designer">Designer</option>
           <option value="owner">Owner</option>
           <option value="votes">Votes</option>
+          <option value="review_body">Length</option>
           <option value="comment_count">Comments</option>
           {props.currentCategory === "all-categories" ? <option value="category">Category</option> : null}
         </select>
