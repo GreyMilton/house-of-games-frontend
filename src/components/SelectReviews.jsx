@@ -1,24 +1,6 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { getCategories } from "../utils/api";
 import { capitaliseAndReplaceDashes } from "../utils/string-utils";
 
 function SelectReviews (props) {
-  const [allCategories, setAllCategories] = useState([{slug: "all-categories"}]);
-
-  useEffect(() => {
-    getCategories().then((res) => {
-      setAllCategories((prevAllCategories) => {
-        return [ {slug: "all-categories"}, ...res ]
-      });
-    }).catch((err) => {
-      console.log(err);
-    });
-  }, [])
-
-  useEffect(() => {
-    console.log("allCategories has been set:", allCategories);
-  }, [allCategories]);
 
   function selectNewCategory(event) {
     props.setCurrentCategory(event.target.value);
@@ -34,15 +16,15 @@ function SelectReviews (props) {
 
   return (
     <section className="select-reviews">
-      <label>Category:
+      {/* <label>Category:
         <select name="select-category" className="categories-select" onChange={selectNewCategory}>
-          {allCategories.map((category, index) => {
+          {props.allCategories.map((category, index) => {
             return (
               <option key={category.slug} value={category.slug}>{capitaliseAndReplaceDashes(category.slug)}</option>
             )
           })}
         </select>
-      </label>
+      </label> */}
       <label>Sorting:
         <select className="sort-by-select" onChange={selectNewSortBy}>
           <option value="created_at">Created at</option>

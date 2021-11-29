@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import DisplayReviews from "./DisplayReviews";
 import SelectReviews from "./SelectReviews";
 
-function CategoryPage () {
+
+
+function CategoryPage (props) {
   const [currentCategory, setCurrentCategory] = useState("all-categories");
   const [currentSortBy, setCurrentSortBy] = useState("created_at");
   const [currentOrder, setCurrentOrder] = useState("desc");
@@ -21,7 +23,7 @@ function CategoryPage () {
 
   return (
     <section className="category-page">
-      <SelectReviews currentCategory={currentCategory} setCurrentCategory={setCurrentCategory} setCurrentSortBy={setCurrentSortBy} setCurrentOrder={setCurrentOrder} />
+      <SelectReviews currentCategory={currentCategory} setCurrentCategory={setCurrentCategory} setCurrentSortBy={setCurrentSortBy} setCurrentOrder={setCurrentOrder} allCategories={props.allCategories} setAllCategories={props.setAllCategories} />
       <DisplayReviews currentCategory={currentCategory} currentSortBy={currentSortBy} currentOrder={currentOrder} />
     </section>);
 }

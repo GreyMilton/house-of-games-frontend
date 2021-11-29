@@ -12,8 +12,8 @@ export const getCategories = () => {
 
 export const getReviews = (category, sort, order) => {
   let path = "/reviews";
-  if (category !== "all-categories") {
-    path += `?category=${category}&sort_by=${sort}&order=${order}`;
+  if (category !== "all-categories" && category !== '/' && category !== undefined && category !== "/reviews") {
+    path += `?category=${category.substring(9)}&sort_by=${sort}&order=${order}`;
   } else {
     path += `?sort_by=${sort}&order=${order}`
   }

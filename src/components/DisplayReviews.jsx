@@ -3,8 +3,16 @@ import { Link } from "react-router-dom";
 import { getReviews } from "../utils/api";
 import { sortAndOrderArrayOfObjectsByLengthOfGivenValue } from "../utils/array-utils";
 import { capitaliseAndReplaceDashes } from "../utils/string-utils";
+import { useLocation } from "react-router";
 
 function DisplayReviews (props) {
+  const location = useLocation();
+  const [currentLocation, setCurrentLocation] = useState();
+
+  useEffect(() => {
+    setCurrentLocation(location.pathname);
+  }, [location])
+
   const [currentReviews, setCurrentReviews] = useState();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +27,7 @@ function DisplayReviews (props) {
 
   useEffect(() => {
     setIsLoading(true)
-    getReviews(props.currentCategory, props.currentSortBy, props.currentOrder).then((res) => {
+    getReviews(currentLocation, props.currentSortBy, props.currentOrder).then((res) => {
       setIsLoading(false);
       if (props.currentSortBy !== "review_body") setCurrentReviews(res);
       else {
@@ -30,7 +38,7 @@ function DisplayReviews (props) {
       console.log(err);
       setIsLoading(false);
     })
-  }, [props.currentCategory, props.currentSortBy, props.currentOrder]);
+  }, [currentLocation, props.currentSortBy, props.currentOrder]);
 
 
   return (
