@@ -3,31 +3,15 @@ import { Link } from "react-router-dom";
 import { getReviews } from "../utils/api";
 import { sortAndOrderArrayOfObjectsByLengthOfGivenValue } from "../utils/array-utils";
 import { capitaliseAndReplaceDashes } from "../utils/string-utils";
-import { useLocation } from "react-router";
 
 function DisplayReviews (props) {
-  const location = useLocation();
-  const [currentLocation, setCurrentLocation] = useState();
-
-  useEffect(() => {
-    setCurrentLocation(location.pathname);
-  }, [location])
 
   const [currentReviews, setCurrentReviews] = useState();
-
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log("currentReviews has been set:", currentReviews);
-  }, [currentReviews])
-
-  useEffect(() => {
-    console.log("isLoading:", isLoading)
-  }, [isLoading])
-
-  useEffect(() => {
     setIsLoading(true)
-    getReviews(currentLocation, props.currentSortBy, props.currentOrder).then((res) => {
+    getReviews(props.currentLocation, props.currentSortBy, props.currentOrder).then((res) => {
       setIsLoading(false);
       if (props.currentSortBy !== "review_body") setCurrentReviews(res);
       else {
@@ -38,7 +22,7 @@ function DisplayReviews (props) {
       console.log(err);
       setIsLoading(false);
     })
-  }, [currentLocation, props.currentSortBy, props.currentOrder]);
+  }, [props.currentLocation, props.currentSortBy, props.currentOrder]);
 
 
   return (

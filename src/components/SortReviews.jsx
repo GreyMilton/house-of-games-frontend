@@ -1,30 +1,13 @@
-import { capitaliseAndReplaceDashes } from "../utils/string-utils";
-
-function SelectReviews (props) {
-
-  function selectNewCategory(event) {
-    props.setCurrentCategory(event.target.value);
-  }
+function SortReviews (props) {
 
   function selectNewSortBy(event) {
     props.setCurrentSortBy(event.target.value);
   }
-
   function selectNewOrder(event) {
     props.setCurrentOrder(event.target.value);
   }
-
   return (
-    <section className="select-reviews">
-      {/* <label>Category:
-        <select name="select-category" className="categories-select" onChange={selectNewCategory}>
-          {props.allCategories.map((category, index) => {
-            return (
-              <option key={category.slug} value={category.slug}>{capitaliseAndReplaceDashes(category.slug)}</option>
-            )
-          })}
-        </select>
-      </label> */}
+    <section className="sort-reviews">
       <label>Sorting:
         <select className="sort-by-select" onChange={selectNewSortBy}>
           <option value="created_at">Created at</option>
@@ -34,7 +17,7 @@ function SelectReviews (props) {
           <option value="votes">Votes</option>
           <option value="review_body">Length</option>
           <option value="comment_count">Comments</option>
-          {props.currentCategory === "all-categories" ? <option value="category">Category</option> : null}
+          {(props.currentLocation === "/" || props.currentLocation === "/reviews" )? <option value="category">Category</option> : null}
         </select>
       </label>
       <label>Order:
@@ -47,4 +30,4 @@ function SelectReviews (props) {
     );
 }
 
-export default SelectReviews ;
+export default SortReviews ;

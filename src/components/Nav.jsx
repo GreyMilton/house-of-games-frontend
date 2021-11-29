@@ -3,10 +3,6 @@ import { NavLink } from "react-router-dom";
 
 function Nav (props) {
 
-  function selectNewCategory(event) {
-    props.setCurrentCategory(event.target.value);
-  }
-
   return (
     <nav className="Nav">
       <NavLink to="/reviews">All categories</NavLink>

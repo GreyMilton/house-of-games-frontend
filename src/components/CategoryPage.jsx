@@ -1,30 +1,25 @@
 import { useEffect, useState } from "react";
 import DisplayReviews from "./DisplayReviews";
-import SelectReviews from "./SelectReviews";
+import SortReviews from "./SortReviews";
+import { useLocation } from "react-router";
 
 
 
-function CategoryPage (props) {
-  const [currentCategory, setCurrentCategory] = useState("all-categories");
+function CategoryPage () {
+  const location = useLocation();
+  const [currentLocation, setCurrentLocation] = useState();
+
+  useEffect(() => {
+    setCurrentLocation(location.pathname);
+  }, [location])
+
   const [currentSortBy, setCurrentSortBy] = useState("created_at");
   const [currentOrder, setCurrentOrder] = useState("desc");
-  
-  useEffect(() => {
-    console.log("currentCategory has been set:", currentCategory);
-  }, [currentCategory]);
-
-  useEffect(() => {
-    console.log("currentSortBy has been set:", currentSortBy);
-  }, [currentSortBy]);
-
-  useEffect(() => {
-    console.log("currentOrder has been set:", currentOrder);
-  }, [currentOrder]);
 
   return (
     <section className="category-page">
-      <SelectReviews currentCategory={currentCategory} setCurrentCategory={setCurrentCategory} setCurrentSortBy={setCurrentSortBy} setCurrentOrder={setCurrentOrder} allCategories={props.allCategories} setAllCategories={props.setAllCategories} />
-      <DisplayReviews currentCategory={currentCategory} currentSortBy={currentSortBy} currentOrder={currentOrder} />
+      <SortReviews currentLocation={currentLocation} setCurrentSortBy={setCurrentSortBy} setCurrentOrder={setCurrentOrder} />
+      <DisplayReviews currentLocation={currentLocation} currentSortBy={currentSortBy} currentOrder={currentOrder} />
     </section>);
 }
 
