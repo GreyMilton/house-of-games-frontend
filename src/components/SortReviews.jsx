@@ -13,7 +13,7 @@ function SortReviews (props) {
           <option value="created_at">Created at</option>
           <option value="title">Title</option>
           <option value="designer">Designer</option>
-          <option value="owner">Owner</option>
+          <option value="owner">Reviewer</option>
           <option value="votes">Votes</option>
           <option value="review_body">Length</option>
           <option value="comment_count">Comments</option>
