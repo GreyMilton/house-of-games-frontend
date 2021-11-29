@@ -1,6 +1,18 @@
 .App {
   text-align: center;
 }
+@media screen and (min-width: 651px) {
+  .categories-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .nav {position: relative;}
+  .nav {
+    flex-direction: column;
+  }
+}
 
 @media screen and (max-width: 480px) {
   .display-reviews {
@@ -26,6 +38,22 @@
 
 #header p {
   background-color: rgb(239, 245, 255);
+}
+
+.nav {
+  background-color: rgb(250, 241, 228);
+  display: flex;
+  justify-content: center;
+}
+.nav a {
+  text-align: center;
+  padding: 14px 8px;
+  font-size: 16px;
+}
+
+.active {
+  background-color: #440d24;
+  color: white;
 }
 
 .category-page {
@@ -102,4 +130,26 @@
   width: 80%;
   max-width: 250px;
   border-radius: 4px;
+}
+
+.categories-button {
+  appearance: auto;
+  text-rendering: auto;
+  color: white;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  box-sizing: border-box;
+  background-color: #440d24;
+  margin: 0;
+  border: none;
+  padding: 14px 8px;
+  font-size: 16px;
+  cursor:pointer;
 }

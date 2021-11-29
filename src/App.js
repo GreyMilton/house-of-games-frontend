@@ -28,7 +28,7 @@ function App() {
         <Nav allCategories={allCategories}/>
         <Routes>
           <Route path="/" element={<CategoryPage />} />
-          <Route path="/reviews" element={<CategoryPage />} />
+          <Route path="/reviews/all" element={<CategoryPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/reviews/:review_id" element={<ReviewPage />} />
           {allCategories && allCategories.map((category, index) => {
