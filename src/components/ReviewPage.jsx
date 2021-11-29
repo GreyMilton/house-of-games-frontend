@@ -1,24 +1,16 @@
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { getReviewById } from "../utils/api";
 import ReviewDisplay from "./ReviewDisplay";
 import NewComment from "./NewComment";
 import SortComments from "./SortComments";
 import DisplayComments from "./DisplayComments";
-import { useParams } from "react-router";
-import { useEffect, useState } from "react";
-import { getReviewById } from "../utils/api";
 
 function ReviewPage () {
   const [currentReview, setCurrentReview] = useState();
+  const [currentCommentsSortBy, setCurrentCommentsSortBy] = useState("created_at");
+  const [currentCommentsOrder, setCurrentCommentsOrder] = useState("desc");
   const [reviewDisplayIsLoading, setReviewDisplayIsLoading] = useState(true);
-
-  useEffect(() => {
-    console.log("reviewDisplayIsLoading:", reviewDisplayIsLoading);
-  }, [reviewDisplayIsLoading])
-
-  useEffect(() => {
-    console.log("currentReview has been set:", currentReview);
-  }, [currentReview])
-
-
   const params = useParams();
 
   useEffect(() => {
@@ -28,17 +20,6 @@ function ReviewPage () {
       setReviewDisplayIsLoading(false);
     }).catch((err) => {console.log(err)});
   }, [params.review_id])
-
-  const [currentCommentsSortBy, setCurrentCommentsSortBy] = useState("created_at");
-  const [currentCommentsOrder, setCurrentCommentsOrder] = useState("desc");
-
-  useEffect(() => {
-    console.log("currentCommentsSortBy has been set:", currentCommentsSortBy);
-  }, [currentCommentsSortBy]);
-
-  useEffect(() => {
-    console.log("currentCommentsOrder has been set:", currentCommentsOrder);
-  }, [currentCommentsOrder]);
 
   return (
     <section className="review-page">

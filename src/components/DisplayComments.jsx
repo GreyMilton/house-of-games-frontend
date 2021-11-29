@@ -4,7 +4,7 @@ import { sortAndOrderArrayOfObjects } from "../utils/array-utils"
 import { UserContext } from "../contexts/user-context"
 
 function DisplayComments (props) {
-  const { currentUser, setCurrentUser } = useContext(UserContext)
+  const { currentUser } = useContext(UserContext)
   const [currentComments, setCurrentComments] = useState();
   const [commentsIsLoading, setCommentsIsLoading] = useState(true);
   const [commentHasBeenDeleted, setCommentHasBeenDeleted] = useState(false);
@@ -12,12 +12,10 @@ function DisplayComments (props) {
   useEffect(() => {
     setCommentsIsLoading(true);
     getCommentsByReviewId(props.params.review_id).then((res) => {
-      console.log("res:", res);
       setCurrentComments(res);
       setCommentsIsLoading(false);
     })
     .catch((err) => {
-      console.log(err);
       setCommentsIsLoading(false);
     })
   },[props.params.review_id])
@@ -31,14 +29,10 @@ function DisplayComments (props) {
   }, [commentHasBeenDeleted, props.currentCommentsSortBy, props.currentCommentsOrder])
 
   function removeComment(event) {
-    console.log("deleting comment ", event.target.value);
     deleteComment(event.target.value).then((res) => {
-      console.log(res);
       setCommentHasBeenDeleted(true);
     }).catch((err) => {
-      console.log(err);
     })
-
   }
 
   return (

@@ -1,16 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { postNewComment } from "../utils/api";
 import { UserContext } from "../contexts/user-context"
 
 function NewComment (props) {
-  const { currentUser, setCurrentUser } = useContext(UserContext)
-
+  const { currentUser } = useContext(UserContext)
   const [newCommentDraft, setNewCommentDraft] = useState();
-
-  useEffect(() => {
-    console.log(newCommentDraft);
-  },[newCommentDraft])
-
 
   const trackNewComment = (event) => {
     setNewCommentDraft(event.target.value);
@@ -18,9 +12,7 @@ function NewComment (props) {
 
   const submitNewComment = (event) => {
     event.preventDefault();
-    postNewComment(props.params.review_id, currentUser, newCommentDraft).then((res) => {
-      console.log(res)
-    })
+    postNewComment(props.params.review_id, currentUser, newCommentDraft).then
     .catch((err) => {
       console.log(err)
     });

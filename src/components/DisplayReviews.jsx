@@ -24,12 +24,10 @@ function DisplayReviews (props) {
     })
   }, [props.currentLocation, props.currentSortBy, props.currentOrder]);
 
-
   return (
     <>
     {isLoading ? <p className="loading">loading...</p> : null}
     <section className="display-reviews">
-
       { currentReviews ? currentReviews.map((review) => {
         return (
           <section key={review.review_id} className={"review-card " + review.category}>

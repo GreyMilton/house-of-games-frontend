@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react";
-import DisplayReviews from "./DisplayReviews";
-import SortReviews from "./SortReviews";
 import { useLocation } from "react-router";
-
-
+import SortReviews from "./SortReviews";
+import DisplayReviews from "./DisplayReviews";
 
 function CategoryPage () {
-  const location = useLocation();
+  const [currentSortBy, setCurrentSortBy] = useState("created_at");
+  const [currentOrder, setCurrentOrder] = useState("desc");
   const [currentLocation, setCurrentLocation] = useState();
+  const location = useLocation();
 
   useEffect(() => {
     setCurrentLocation(location.pathname);
   }, [location])
-
-  const [currentSortBy, setCurrentSortBy] = useState("created_at");
-  const [currentOrder, setCurrentOrder] = useState("desc");
 
   return (
     <section className="category-page">
