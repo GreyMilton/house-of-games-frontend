@@ -1,13 +1,25 @@
 import { capitaliseAndReplaceDashes } from "../utils/string-utils";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 function Nav (props) {
-
+  const windowDimensions = useWindowDimensions();
   const [showDropdown, setShowDropdown] = useState(false);
-  const [navNumber, setNavNumber] = useState(7);
+  const [navNumber, setNavNumber] = useState(8);
   const [buttonState, setButtonState] = useState("not-clicked");
   const [dropdownCategoryClicked, setDropdownCategoryIsClicked] = useState(false);
+
+
+  useEffect(() => {
+    if (windowDimensions.width < 284) setNavNumber(1);
+    else if (windowDimensions.width < 355) setNavNumber(2);
+    else if (windowDimensions.width < 440) setNavNumber(3);
+    else if (windowDimensions.width < 535) setNavNumber(4);
+    else if (windowDimensions.width < 610) setNavNumber(5);
+    else if (windowDimensions.width < 700) setNavNumber(6);
+    else setNavNumber(8);
+  }, [windowDimensions])
 
   function clickOfButton () {
     showDropdown ? setShowDropdown(false) : setShowDropdown(true);
@@ -35,7 +47,7 @@ function Nav (props) {
             )
           }
         })}
-       {navNumber < 8 && <button className={`categories-button ${buttonState} ${dropdownCategoryClicked ? "dropdown-clicked" : "main-clicked"}`} onClick={clickOfButton} >More categories...</button>}
+       {navNumber < 8 && <button className={`categories-button ${buttonState} ${dropdownCategoryClicked ? "dropdown-clicked" : "main-clicked"}`} onClick={clickOfButton} >More...</button>}
       </nav>
       <nav className="nav-dropdown">    
         {(showDropdown && navNumber < 1) && <NavLink to="/reviews/all">All categories</NavLink>}

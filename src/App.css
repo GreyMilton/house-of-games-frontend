@@ -1,23 +1,6 @@
 .App {
   text-align: center;
 }
-@media screen and (min-width: 651px) {
-  /* .categories-button {
-    display: none;
-  }
-  .nav-dropdown {
-    display: none;
-  } */
-  .nav-main {
-    display: flex;
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .nav-main {
-    display: none;
-  }
-}
 
 @media screen and (max-width: 480px) {
   .display-reviews {
@@ -64,14 +47,15 @@
 
 .nav-main {
   background-color: rgb(250, 241, 228);
+  display: flex;
   justify-content: center;
 }
+
 .nav-main a {
   text-align: center;
   padding: 14px 10px;
   font-size: 16px;
 }
-
 .active {
   background-color: #440d24;
   color: white;
