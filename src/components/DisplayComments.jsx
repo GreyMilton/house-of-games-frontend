@@ -51,7 +51,7 @@ function DisplayComments (props) {
         return newState;
       });
       setAdditionalVotes((prevCount) => {
-        const newVotesCount = { ... prevCount };
+        const newVotesCount = { ...prevCount };
         if (newVotesCount[this] === -1) newVotesCount[this] += 1;
         else newVotesCount[this] = 1;
         return newVotesCount;
@@ -73,7 +73,7 @@ function DisplayComments (props) {
         return newState;
       });
       setAdditionalVotes((prevCount) => {
-        const newVotesCount = { ... prevCount };
+        const newVotesCount = { ...prevCount };
         if (newVotesCount[this] === 1) newVotesCount[this] -= 1;
         else newVotesCount[this] = -1;
         return newVotesCount;
