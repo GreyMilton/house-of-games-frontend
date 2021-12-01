@@ -45,6 +45,7 @@ function Nav (props) {
               <NavLink key={category.slug} to={`reviews/${category.slug}`} onClick={clickMainLink}>{capitaliseAndReplaceDashes(category.slug)}</NavLink>
             )
           }
+          else return null;
         })}
        {navNumber < 8 && <button className={`categories-button ${buttonState} ${dropdownCategoryClicked ? "dropdown-clicked" : "main-clicked"}`} onClick={clickOfButton} >More...</button>}
       </nav>
@@ -56,6 +57,7 @@ function Nav (props) {
               <NavLink key={category.slug + '-dropdown'} to={`reviews/${category.slug}`} onClick={clickDropdownLink}>{capitaliseAndReplaceDashes(category.slug)}</NavLink>
             )
           }
+          else return null;
         })}
       </nav>
     </>);
