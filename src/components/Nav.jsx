@@ -10,7 +10,6 @@ function Nav (props) {
   const [buttonState, setButtonState] = useState("not-clicked");
   const [dropdownCategoryClicked, setDropdownCategoryIsClicked] = useState(false);
 
-
   useEffect(() => {
     if (windowDimensions.width < 284) setNavNumber(1);
     else if (windowDimensions.width < 355) setNavNumber(2);

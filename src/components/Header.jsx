@@ -13,7 +13,7 @@ function Header () {
   return (
     <header id="header">
       <Link to="/"><h1>Grey's House of Games</h1></Link>
-      {currentUser ? <p className="username-display">You are logged in as: {currentUser}</p> : null}
+      {currentUser ? <p className="username-display">Hi {currentUser}!</p> : null}
       <Link to="/login"><button onClick={logOut}>{currentUser ? "Log out" : "Log in"}</button></Link>
     </header>);
 }
