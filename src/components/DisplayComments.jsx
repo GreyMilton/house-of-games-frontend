@@ -17,6 +17,7 @@ function DisplayComments (props) {
     })
     .catch((err) => {
       setCommentsIsLoading(false);
+      console.log(err);
     })
   },[props.params.review_id])
 
@@ -32,6 +33,7 @@ function DisplayComments (props) {
     deleteComment(event.target.value).then((res) => {
       setCommentHasBeenDeleted(true);
     }).catch((err) => {
+      console.log(err);
     })
   }
 
