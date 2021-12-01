@@ -37,6 +37,54 @@ function DisplayComments (props) {
     })
   }
 
+  const [additionalVotes, setAdditionalVotes] = useState({});
+  const [hasIncrementedVote, setHasIncrementedVote] = useState({});
+  const [hasDecrementedVote, setHasDecrementedVote] = useState({});
+
+  function addVotesToComment (event) {
+    event.preventDefault();
+    console.log(this);
+    if (!hasIncrementedVote[this]) {
+      setHasIncrementedVote(prevState => {
+        const newState = { ...prevState };
+        newState[this] = true;
+        return newState;
+      });
+      setAdditionalVotes((prevCount) => {
+        const newVotesCount = { ... prevCount };
+        if (newVotesCount[this] === -1) newVotesCount[this] += 1;
+        else newVotesCount[this] = 1;
+        return newVotesCount;
+      });
+      // patchComment(this, 1)
+      //   .catch ((err) => {
+      //   console.log(err);
+      //   });
+    }
+  }
+
+  function subtractVotesFromComment (event) {
+    event.preventDefault();
+    console.log(this);
+    if (!hasDecrementedVote[this]) {
+      setHasDecrementedVote(prevState => {
+        const newState = { ...prevState };
+        newState[this] = true;
+        return newState;
+      });
+      setAdditionalVotes((prevCount) => {
+        const newVotesCount = { ... prevCount };
+        if (newVotesCount[this] === 1) newVotesCount[this] -= 1;
+        else newVotesCount[this] = -1;
+        return newVotesCount;
+      });
+    //   patchComment(this, -1)
+    //     .catch ((err) => {
+    //     console.log(err);
+    //     });
+    }
+  }
+
   return (
     <section className="display-comments">
       {commentsIsLoading && <p>loading...</p>}
@@ -46,7 +94,7 @@ function DisplayComments (props) {
             <h4>{comment.author}{( comment.author === currentUser) && " (you)"}</h4>
             <p>At: {comment.created_at}</p>
             <p>{comment.body}</p>
-            <p>Votes:{comment.votes} <button onClick={() =>{console.log("up")}}>+</button><button onClick={() => {console.log("down")}}>-</button></p>
+            <p>Votes:{ additionalVotes[comment.comment_id] ? comment.votes + additionalVotes[comment.comment_id] : comment.votes} <button onClick={addVotesToComment.bind(comment.comment_id)}>+</button><button onClick={subtractVotesFromComment.bind(comment.comment_id)}>-</button></p>
             {( comment.author === currentUser) && <button value={comment.comment_id} onClick={removeComment}>Delete comment</button>}
             <p></p>
           </section>
