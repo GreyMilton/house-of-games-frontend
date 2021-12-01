@@ -4,27 +4,35 @@ import { capitaliseAndReplaceDashes } from "../utils/string-utils"
 
 function ReviewDisplay (props) {
   const [newVotesCount, setNewVotesCount] = useState(0);
+  const [hasIncrementedVote, setHasIncrementedVote] = useState(false);
+  const [hasDecrementedVote, setHasDecrementedVote] = useState(false);
 
   function addVotesToReview (event) {
     event.preventDefault();
-    setNewVotesCount((prevCount) => {
-      return prevCount + 1;
-    });
-    patchReview(props.params.review_id, 1)
-      .catch ((err) => {
-      console.log(err);
+    if (!hasIncrementedVote) {
+      setHasIncrementedVote(true);
+      setNewVotesCount((prevCount) => {
+        return prevCount + 1;
       });
+      patchReview(props.params.review_id, 1)
+        .catch ((err) => {
+        console.log(err);
+        });
+    }
   }
 
   function subtractVotesFromReview (event) {
     event.preventDefault();
-    setNewVotesCount((prevCount) => {
-      return prevCount - 1;
-    });
-    patchReview(props.params.review_id, -1)
-      .catch ((err) => {
-      console.log(err);
+    if (!hasDecrementedVote) {
+      setHasDecrementedVote(true);
+      setNewVotesCount((prevCount) => {
+        return prevCount - 1;
       });
+      patchReview(props.params.review_id, -1)
+        .catch ((err) => {
+        console.log(err);
+        });
+    }
   }
 
   return (
