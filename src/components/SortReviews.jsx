@@ -8,7 +8,7 @@ function SortReviews (props) {
   }
   return (
     <section className="sort-reviews">
-      <label>Sorting:
+      <label>Sort:
         <select className="sort-by-select" onChange={selectNewSortBy}>
           <option value="created_at">Created at</option>
           <option value="title">Title</option>

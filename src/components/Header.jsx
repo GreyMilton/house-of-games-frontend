@@ -13,8 +13,10 @@ function Header () {
   return (
     <header id="header">
       <Link to="/"><h1>Grey's House of Games</h1></Link>
-      {currentUser ? <p className="username-display">Hi {currentUser}!</p> : null}
-      <Link to="/login"><button onClick={logOut}>{currentUser ? "Log out" : "Log in"}</button></Link>
+      <section id="user-section">
+        {currentUser ? <p className="username-display">Hi {currentUser}!</p> : null}
+        <Link to="/login"><button onClick={logOut}>{currentUser ? "Log out" : "Log in"}</button></Link>
+      </section>
     </header>);
 }
 
