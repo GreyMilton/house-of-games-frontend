@@ -3,6 +3,10 @@
 }
 
 @media screen and (max-width: 480px) {
+
+  #header {
+    flex-direction: column;
+  }
   .display-reviews {
     grid-template-columns: 100%;
   }
@@ -16,16 +20,36 @@
 
 #header {
   display: flex;
-  justify-content: space-between;
-  border: solid green;
+  justify-content: space-evenly;
+  /* border: solid green; */
+  align-items: center
 }
 
 #header h1 {
-  background-color: cornsilk;
+  /* background-color: cornsilk; */
+  font-family: 'Inspiration', cursive;
+  font-size: 50px;
+  margin: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 #header p {
-  background-color: rgb(239, 245, 255);
+  /* background-color: rgb(239, 245, 255); */
+  margin: 0;
+  align-items: center
+}
+
+#header a {
+  text-decoration: none;
+}
+
+#header a:link {
+  color: rgb(104, 148, 15);
+}
+
+#header a:visited {
+  color: rgb(104, 148, 15);
 }
 
 .nav-dropdown {
@@ -110,25 +134,25 @@
 }
 
 .review-page {
-  border: solid teal;
+  /* border: solid rgb(19, 53, 73); */
 }
 
 .review-display {
   margin: 0;
   padding: 7%;
-  border: solid yellowgreen;
+  /* border: solid blue; */
 }
 
 .new-comment {
-  border: solid thistle;
+  /* border: solid thistle; */
 }
 
 .sort-comments {
-  border: solid mediumaquamarine;
+  /* border: solid mediumaquamarine; */
 }
 
 .display-comments {
-  border: solid palevioletred;
+  /* border: solid palevioletred; */
 }
 
 .review-image {
