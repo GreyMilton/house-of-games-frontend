@@ -44,7 +44,7 @@ function ReviewDisplay (props) {
         <h2>{props.currentReview.title }</h2>
         <p>{props.currentReview.review_body}</p>
         <p>Reviewer: {props.currentReview.owner}</p>
-        <p>At: {props.currentReview.created_at}</p>
+        <p className="date-and-time">{new Date(props.currentReview.created_at).toString().substring(0, 21) + " " + new Date(props.currentReview.created_at).toString().substring(34)}</p>
         <p>Game designer: {props.currentReview.designer}</p>
         <p>Category: {capitaliseAndReplaceDashes(props.currentReview.category)}</p>
         <p>Votes: {props.currentReview.votes + newVotesCount} <button onClick={addVotesToReview}>+</button><button onClick={subtractVotesFromReview}>-</button></p>

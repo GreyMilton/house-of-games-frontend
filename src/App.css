@@ -70,7 +70,7 @@
 }
 
 #header a:link {
-  color: rgb(96, 136, 15);
+  color: #214F4B;
 }
 
 #header a:visited {
@@ -81,7 +81,7 @@
   color: white;
   cursor:pointer;
   /* background-color: rgb(164, 33, 182); */
-  background-color: #38A700;
+  background-color: #666666;
   padding: 3px 8px;
   border-width: 0px;
   border-style: solid;
@@ -124,7 +124,7 @@
   text-decoration: none
 }
 .active {
-  background-color: #38A700;
+  background-color: #ff8100;
   color: white;
 }
 
@@ -192,24 +192,122 @@
 }
 
 .review-page {
-  /* border: solid rgb(19, 53, 73); */
+  /* border: solid pink; */
+  margin: 11px 0px 0px 0px;
+  /* background-color: rgb(217, 252, 217); */
 }
 
+/* .review-display-container {
+  background-color: tomato;
+} */
+
 .review-display {
-  margin: 0;
+  /* margin: 20px 0px 20px 0px; */
   padding: 7%;
+  /* border: solid thistle; */
+  /* background-color: white; */
+}
+
+.review-display button{
+  margin: 0px 2px;
+  width: 24px;
+  height: 24px;
+  color: white;
+  cursor:pointer;
+  /* background-color: rgb(164, 33, 182); */
+  background-color: #666666;
+  /* padding: 3px 8px; */
+  border-width: 0px;
+  border-style: solid;
+  /* border-color: rgb(118, 118, 118); */
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.comments-count {
+  /* background-color: white; */
+  margin: 0px;
+  /* border: solid yellowgreen; */
+}
+
+h3 {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 14px;
 }
 
 .new-comment {
+  /* background-color: white; */
+  padding: 20px 0px;
+  margin: 0px;
   /* border: solid thistle; */
+  background-color: rgb(229, 226, 226);
+}
+
+.new-comment-input {
+  margin: 0px 2px;
+}
+
+.new-comment-submit {
+  margin: 0px 1px;
+  color: white;
+  cursor:pointer;
+  /* background-color: rgb(164, 33, 182); */
+  background-color: #666666;
+  padding: 3px 8px;
+  border-width: 0px;
+  border-style: solid;
+  border-color: rgb(118, 118, 118);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: bold;
 }
 
 .sort-comments {
+  padding: 15px 0px 5px;
+  background-color: white;
+  margin: 0px;
   /* border: solid mediumaquamarine; */
 }
 
+label {
+  font-size: 14px;
+}
+
 .display-comments {
-  /* border: solid palevioletred; */
+  margin: 0px;
+  border: 0.1px solid white;
+  background-color: white;
+}
+
+.comment-card {
+  /* border: solid green; */
+  padding: 2px;
+  margin: 6px;
+  border-radius: 4px;
+  background-color: rgb(229, 226, 226);
+}
+
+.comment-card button{
+  margin: 0px 2px;
+  width: 24px;
+  height: 24px;
+  color: white;
+  cursor:pointer;
+  /* background-color: rgb(164, 33, 182); */
+  background-color: #666666;
+  /* padding: 3px 8px; */
+  border-width: 0px;
+  border-style: solid;
+  /* border-color: rgb(118, 118, 118); */
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.date-and-time {
+  font-style: italic;
 }
 
 .review-image {
@@ -243,7 +341,7 @@
 }
 
 .categories-button.dropdown-clicked {
-  background-color: #38A700;
+  background-color: #ff8100;
 }
 
 .categories-button.clicked {
@@ -251,19 +349,21 @@
 }
 
 .sort-by-select {
-  background-color: #3772FF;
+  background-color: #ff8100;
   border: none;
   border-radius: 5px;
   color: white;
   font-size: 12px;
   padding: 2px;
+  margin: 2px;
 }
 
 .order-select {
-  background-color: #3772FF;
+  background-color: #ff8100;
   border: none;
   border-radius: 5px;
   color: white;
   font-size: 12px;
   padding: 2px;
+  margin: 2px
 }

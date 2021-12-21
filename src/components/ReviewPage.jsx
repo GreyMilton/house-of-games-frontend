@@ -22,7 +22,7 @@ function ReviewPage () {
   }, [params.review_id])
 
   return (
-    <section className="review-page">
+    <section className={currentReview ? "review-page " + currentReview.category : "review-page"}>
       <ReviewDisplay params={params} reviewDisplayIsLoading={reviewDisplayIsLoading} currentReview={currentReview} />
       {currentReview && <h3 className="comments-count">This review has {currentReview.comment_count} comment{currentReview.comment_count !== 1 ? 's' : null}.</h3>}
       <NewComment params={params}/>

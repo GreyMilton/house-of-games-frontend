@@ -21,10 +21,10 @@ function NewComment (props) {
   return (
     <section className="new-comment">
       <form onSubmit={submitNewComment}>
-        <label>New comment:
-          <input type="text" onChange={trackNewComment} />
+        <label className="new-comment-label">New comment:
+          <input className="new-comment-input" type="text" onChange={trackNewComment} />
         </label>
-        <input type="submit" value="Submit" />
+        <input className="new-comment-submit" type="submit" value="Submit" />
       </form>
     </section>);
 }
