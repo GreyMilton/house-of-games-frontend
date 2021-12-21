@@ -121,10 +121,11 @@
   padding: 14px 10px;
   font-size: 16px;
   color: white;
-  text-decoration: none
+  text-decoration: none;
+  text-align: center;
 }
 .active {
-  background-color: #ff8100;
+  background-color: #ff931b;
   color: white;
 }
 
@@ -149,6 +150,11 @@
   border-radius: 8px;
 }
 
+.review-card a {
+  color: black;
+  text-decoration: none;
+}
+
 .review-card h2 {
   font-size: 18px;
 }
@@ -165,7 +171,7 @@
 }
 
 .strategy{
-  background-color: rgb(217, 252, 217);
+  background-color: rgb(221, 252, 217);
 }
 .hidden-roles{
   background-color:lavenderblush;
@@ -188,7 +194,7 @@
 }
 
 .engine-building {
-  background-color: rgb(226, 226, 226);
+  background-color: rgb(196, 243, 214);
 }
 
 .review-page {
@@ -202,8 +208,7 @@
 } */
 
 .review-display {
-  /* margin: 20px 0px 20px 0px; */
-  padding: 7%;
+  padding: 24px 7%;
   /* border: solid thistle; */
   /* background-color: white; */
 }
@@ -227,7 +232,7 @@
 
 .comments-count {
   /* background-color: white; */
-  margin: 0px;
+  margin: 0px 0px 6px;
   /* border: solid yellowgreen; */
 }
 
@@ -242,7 +247,7 @@ h3 {
   padding: 20px 0px;
   margin: 0px;
   /* border: solid thistle; */
-  background-color: rgb(229, 226, 226);
+  background-color: rgb(241, 241, 241);
 }
 
 .new-comment-input {
@@ -260,7 +265,7 @@ h3 {
   border-style: solid;
   border-color: rgb(118, 118, 118);
   border-radius: 8px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -286,10 +291,10 @@ label {
   padding: 2px;
   margin: 6px;
   border-radius: 4px;
-  background-color: rgb(229, 226, 226);
+  background-color: rgb(241, 241, 241);
 }
 
-.comment-card button{
+.comment-voting-button{
   margin: 0px 2px;
   width: 24px;
   height: 24px;
@@ -310,9 +315,22 @@ label {
   font-style: italic;
 }
 
-.review-image {
+.delete-comment-button {
+  margin: 0px 2px;
+  color: white;
+  cursor:pointer;
+  background-color: #bc484f;
+  padding: 3px 8px;
+  border-width: 0px;
+  border-style: solid;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.review-image-on-review-page {
   width: 80%;
-  max-width: 250px;
+  max-width: 500px;
   border-radius: 4px;
 }
 
@@ -335,21 +353,20 @@ label {
   padding: 14px 8px;
   font-size: 16px;
   cursor: pointer;
-  text-decoration: underline;
   color: white;
   text-decoration: none
 }
 
 .categories-button.dropdown-clicked {
-  background-color: #ff8100;
+  background-color: #ff931b;
 }
 
 .categories-button.clicked {
-  text-decoration: overline;
+  color: rgb(255, 228, 179);
 }
 
 .sort-by-select {
-  background-color: #ff8100;
+  background-color: #ff931b;
   border: none;
   border-radius: 5px;
   color: white;
@@ -359,7 +376,7 @@ label {
 }
 
 .order-select {
-  background-color: #ff8100;
+  background-color: #ff931b;
   border: none;
   border-radius: 5px;
   color: white;

@@ -38,7 +38,7 @@ function Nav (props) {
   return (
     <>
       <nav className="nav-main">
-        <NavLink to="/reviews/all">All categories</NavLink>
+        <NavLink to="/reviews/all" onClick={clickMainLink}>All categories</NavLink>
         {props.allCategories && props.allCategories.map((category, index) => {
           if (index + 1 < navNumber) {
             return (

@@ -8,7 +8,7 @@ function SortReviews (props) {
   }
   return (
     <section className="sort-reviews">
-      <label>Sort:
+      <label>Sorting:
         <select className="sort-by-select" onChange={selectNewSortBy}>
           <option value="created_at">Created at</option>
           <option value="title">Title</option>
@@ -19,8 +19,6 @@ function SortReviews (props) {
           <option value="comment_count">Comments</option>
           {(props.currentLocation === "/" || props.currentLocation === "/reviews" )? <option value="category">Category</option> : null}
         </select>
-      </label>
-      <label>Order:
         <select className="order-select" onChange={selectNewOrder}>
           <option value="desc">Descending</option>
           <option value="asc">Ascending</option>

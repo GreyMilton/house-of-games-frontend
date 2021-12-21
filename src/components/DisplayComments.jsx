@@ -92,10 +92,10 @@ function DisplayComments (props) {
         return (
           <section key={comment.comment_id} className="comment-card">
             <h4>{comment.author}{( comment.author === currentUser) && " (you)"}</h4>
-            <p className="date-and-time">{new Date(comment.created_at).toString().substring(0, 21) + " " + new Date(comment.created_at).toString().substring(34)}</p>
             <p>{comment.body}</p>
-            <p>Votes: { additionalVotes[comment.comment_id] ? comment.votes + additionalVotes[comment.comment_id] : comment.votes} <button onClick={addVotesToComment.bind(comment.comment_id)}>+</button><button onClick={subtractVotesFromComment.bind(comment.comment_id)}>-</button></p>
-            {( comment.author === currentUser) && <button value={comment.comment_id} onClick={removeComment}>Delete comment</button>}
+            <p className="date-and-time">{new Date(comment.created_at).toString().substring(0, 21) + " " + new Date(comment.created_at).toString().substring(34)}</p>
+            <p><strong>Votes:</strong> { additionalVotes[comment.comment_id] ? comment.votes + additionalVotes[comment.comment_id] : comment.votes} <button className="comment-voting-button" onClick={addVotesToComment.bind(comment.comment_id)}>+</button><button className="comment-voting-button" onClick={subtractVotesFromComment.bind(comment.comment_id)}>-</button></p>
+            {( comment.author === currentUser) && <button className="delete-comment-button" value={comment.comment_id} onClick={removeComment}>Delete comment</button>}
             <p></p>
           </section>
         );

@@ -31,16 +31,24 @@ function DisplayReviews (props) {
       { currentReviews ? currentReviews.map((review) => {
         return (
           <section key={review.review_id} className={"review-card " + review.category}>
-            <h2>{review.title}</h2>
-            <p>{review.review_body.length < 199 ? review.review_body : review.review_body.substring(0, 200) + "..."}</p>
-            <p>Reviewer: {review.owner}</p>
-            <p>At: {review.created_at}</p>
-            <p>Game designer: {review.designer}</p>
-            <p>Category: {capitaliseAndReplaceDashes(review.category)}</p>
-            <p>Comments: {review.comment_count}</p>
-            <p>Votes: {review.votes}</p>
-            <img className="review-image" src={review.review_img_url} alt={review.title} /><br/>
-            <Link to={`/reviews/${review.review_id}`}>View</Link>
+            <Link to={`/reviews/${review.review_id}`}>
+              <h2>{review.title}</h2>
+            </Link>
+            <Link to={`/reviews/${review.review_id}`}>
+              <p>{review.review_body.length < 199 ? review.review_body : review.review_body.substring(0, 100) + "..."}</p>
+            </Link>
+            <p><strong>Reviewer:</strong> {review.owner}</p>
+            <p className="date-and-time">{new Date(review.created_at).toString().substring(0, 21)}</p>
+            <p><strong>Game designer:</strong> {review.designer}</p>
+            <p><strong>Category:</strong> {capitaliseAndReplaceDashes(review.category)}</p>
+            <p><strong>Comments:</strong> {review.comment_count}</p>
+            <p><strong>Votes:</strong> {review.votes}</p>
+            <Link to={`/reviews/${review.review_id}`}>
+              <img className="review-image" src={review.review_img_url} alt={review.title} /><br/>
+            </Link>
+            <Link to={`/reviews/${review.review_id}`}>
+              <p>Click to see full review</p>
+            </Link>
           </section >
         );
       })

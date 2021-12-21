@@ -10,7 +10,7 @@ import LoginPage from './components/LoginPage';
 import ReviewPage from './components/ReviewPage';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState("weegembump")
+  const [currentUser, setCurrentUser] = useState("cooljmessy")
   const [allCategories, setAllCategories] = useState();
 
   useEffect(() => {

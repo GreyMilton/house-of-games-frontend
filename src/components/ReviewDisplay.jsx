@@ -40,14 +40,14 @@ function ReviewDisplay (props) {
       {props.reviewDisplayIsLoading ? <p className="loading">loading...</p> : null}
       { props.currentReview ?
       <>
-        <img className="review-image" src={props.currentReview.review_img_url} alt={props.currentReview.title} /><br/>
+        <img className="review-image-on-review-page" src={props.currentReview.review_img_url} alt={props.currentReview.title} /><br/>
         <h2>{props.currentReview.title }</h2>
         <p>{props.currentReview.review_body}</p>
-        <p>Reviewer: {props.currentReview.owner}</p>
+        <p><strong>Reviewer:</strong> {props.currentReview.owner}</p>
         <p className="date-and-time">{new Date(props.currentReview.created_at).toString().substring(0, 21) + " " + new Date(props.currentReview.created_at).toString().substring(34)}</p>
-        <p>Game designer: {props.currentReview.designer}</p>
-        <p>Category: {capitaliseAndReplaceDashes(props.currentReview.category)}</p>
-        <p>Votes: {props.currentReview.votes + newVotesCount} <button onClick={addVotesToReview}>+</button><button onClick={subtractVotesFromReview}>-</button></p>
+        <p><strong>Game designer:</strong> {props.currentReview.designer}</p>
+        <p><strong>Category:</strong> {capitaliseAndReplaceDashes(props.currentReview.category)}</p>
+        <p><strong>Votes:</strong> {props.currentReview.votes + newVotesCount} <button onClick={addVotesToReview}>+</button><button onClick={subtractVotesFromReview}>-</button></p>
       </>
       : null}
     </section>);

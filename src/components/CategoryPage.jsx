@@ -6,8 +6,8 @@ import DisplayReviews from "./DisplayReviews";
 function CategoryPage () {
   const [currentSortBy, setCurrentSortBy] = useState("created_at");
   const [currentOrder, setCurrentOrder] = useState("desc");
-  const [currentLocation, setCurrentLocation] = useState();
   const location = useLocation();
+  const [currentLocation, setCurrentLocation] = useState();
 
   useEffect(() => {
     setCurrentLocation(location.pathname);
