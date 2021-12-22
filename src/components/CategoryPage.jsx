@@ -7,7 +7,7 @@ function CategoryPage () {
   const [currentSortBy, setCurrentSortBy] = useState("created_at");
   const [currentOrder, setCurrentOrder] = useState("desc");
   const location = useLocation();
-  const [currentLocation, setCurrentLocation] = useState();
+  const [currentLocation, setCurrentLocation] = useState(location.pathname);
 
   useEffect(() => {
     setCurrentLocation(location.pathname);
