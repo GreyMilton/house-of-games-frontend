@@ -8,7 +8,6 @@ function Nav (props) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [navNumber, setNavNumber] = useState(8);
   const [buttonState, setButtonState] = useState("not-clicked");
-  const [dropdownCategoryClicked, setDropdownCategoryIsClicked] = useState(false);
 
   useEffect(() => {
     if (windowDimensions.width < 284) setNavNumber(1);
@@ -28,11 +27,11 @@ function Nav (props) {
   }
 
   function clickMainLink () {
-    setDropdownCategoryIsClicked(false);
+    props.setDropdownCategoryIsClicked(false);
   }
 
   function clickDropdownLink () {
-    setDropdownCategoryIsClicked(true);
+    props.setDropdownCategoryIsClicked(true);
   }
 
   return (
@@ -47,7 +46,7 @@ function Nav (props) {
           }
           else return null;
         })}
-       {navNumber < 8 && <button className={`categories-button ${buttonState} ${dropdownCategoryClicked ? "dropdown-clicked" : "main-clicked"}`} onClick={clickOfButton} >More...</button>}
+       {navNumber < 8 && <button className={`categories-button ${buttonState} ${props.dropdownCategoryIsClicked ? "dropdown-clicked" : "main-clicked"}`} onClick={clickOfButton} >More...</button>}
       </nav>
       <nav className="nav-dropdown">    
         {(showDropdown && navNumber < 1) && <NavLink to="/reviews/all">All categories</NavLink>}

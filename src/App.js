@@ -12,6 +12,7 @@ import ReviewPage from './components/ReviewPage';
 function App() {
   const [currentUser, setCurrentUser] = useState("cooljmessy")
   const [allCategories, setAllCategories] = useState();
+  const [dropdownCategoryIsClicked, setDropdownCategoryIsClicked] = useState(false);
 
   useEffect(() => {
     getCategories().then((res) => {
@@ -25,15 +26,15 @@ function App() {
     <UserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="App">
         <Header />
-        <Nav allCategories={allCategories}/>
+        <Nav allCategories={allCategories} dropdownCategoryIsClicked={dropdownCategoryIsClicked} setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>
         <Routes>
-          <Route path="/" element={<CategoryPage />} />
-          <Route path="/reviews/all" element={<CategoryPage />} />
+          <Route path="/" element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
+          <Route path="/reviews/all" element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/reviews/:review_id" element={<ReviewPage />} />
           {allCategories && allCategories.map((category, index) => {
             return (
-              <Route path={`reviews/${category.slug}`} key={index} element={<CategoryPage />} />
+              <Route path={`reviews/${category.slug}`} key={index} element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
             );
           })}
         </ Routes>

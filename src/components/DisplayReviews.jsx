@@ -24,6 +24,10 @@ function DisplayReviews (props) {
     })
   }, [props.currentLocation, props.currentSortBy, props.currentOrder]);
 
+  function handleClick() {
+    props.setDropdownCategoryIsClicked(false);
+  }
+
   return (
     <>
     {isLoading ? <p className="loading">loading...</p> : null}
@@ -31,10 +35,10 @@ function DisplayReviews (props) {
       { currentReviews ? currentReviews.map((review) => {
         return (
           <section key={review.review_id} className={"review-card " + review.category}>
-            <Link to={`/reviews/${review.review_id}`}>
+            <Link onClick={handleClick} to={`/reviews/${review.review_id}`}>
               <h2>{review.title}</h2>
             </Link>
-            <Link to={`/reviews/${review.review_id}`}>
+            <Link onClick={handleClick} to={`/reviews/${review.review_id}`}>
               <p>{review.review_body.length < 199 ? review.review_body : review.review_body.substring(0, 100) + "..."}</p>
             </Link>
             <p><strong>Reviewer:</strong> {review.owner}</p>
@@ -43,10 +47,10 @@ function DisplayReviews (props) {
             <p><strong>Category:</strong> {capitaliseAndReplaceDashes(review.category)}</p>
             <p><strong>Comments:</strong> {review.comment_count}</p>
             <p><strong>Votes:</strong> {review.votes}</p>
-            <Link to={`/reviews/${review.review_id}`}>
+            <Link onClick={handleClick} to={`/reviews/${review.review_id}`}>
               <img className="review-image" src={review.review_img_url} alt={review.title} /><br/>
             </Link>
-            <Link to={`/reviews/${review.review_id}`}>
+            <Link onClick={handleClick} to={`/reviews/${review.review_id}`}>
               <p>Click to see full review</p>
             </Link>
           </section >
