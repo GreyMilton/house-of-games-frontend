@@ -4,9 +4,10 @@ import { UserContext } from "../contexts/user-context"
 
 function Header () {
 
-  const { currentUser, setCurrentUser } = useContext(UserContext)
+  const { currentUser, setCurrentUser, setMostRecentUser } = useContext(UserContext)
 
   function logOut () {
+    setMostRecentUser(currentUser);
     setCurrentUser(null);
   }
 

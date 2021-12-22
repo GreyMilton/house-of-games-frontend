@@ -11,6 +11,7 @@ import ReviewPage from './components/ReviewPage';
 
 function App() {
   const [currentUser, setCurrentUser] = useState("cooljmessy")
+  const [mostRecentUser, setMostRecentUser] = useState();
   const [allCategories, setAllCategories] = useState();
   const [dropdownCategoryIsClicked, setDropdownCategoryIsClicked] = useState(false);
 
@@ -23,7 +24,7 @@ function App() {
   }, [])
 
   return (
-    <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+    <UserContext.Provider value={{ currentUser, setCurrentUser, mostRecentUser, setMostRecentUser }}>
       <div className="App">
         <Header />
         <Nav allCategories={allCategories} dropdownCategoryIsClicked={dropdownCategoryIsClicked} setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>
