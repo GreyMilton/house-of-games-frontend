@@ -12,7 +12,11 @@ function NewComment (props) {
 
   const submitNewComment = (event) => {
     event.preventDefault();
-    postNewComment(props.params.review_id, currentUser, newCommentDraft).then
+    postNewComment(props.params.review_id, currentUser, newCommentDraft).then((res) => {
+      props.setNewCommentCount(prevCommentCount => prevCommentCount + 1);
+      setNewCommentDraft();
+      event.target.reset();
+    })
     .catch((err) => {
       console.log(err)
     });

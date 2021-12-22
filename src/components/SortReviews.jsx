@@ -17,7 +17,7 @@ function SortReviews (props) {
           <option value="votes">Votes</option>
           <option value="review_body">Length</option>
           <option value="comment_count">Comments</option>
-          {(props.currentLocation === "/" || props.currentLocation === "/reviews" )? <option value="category">Category</option> : null}
+          {(props.currentLocation === "/" || props.currentLocation === "/reviews/all" )? <option value="category">Category</option> : null}
         </select>
         <select className="order-select" onChange={selectNewOrder}>
           <option value="desc">Descending</option>

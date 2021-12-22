@@ -19,7 +19,7 @@ function DisplayComments (props) {
       setCommentsIsLoading(false);
       console.log(err);
     })
-  },[props.params.review_id])
+  },[props.params.review_id, props.newCommentCount])
 
   useEffect(() => {
     setCommentHasBeenDeleted(false);
