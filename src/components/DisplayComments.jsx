@@ -10,24 +10,18 @@ function DisplayComments (props) {
   const [commentHasBeenDeleted, setCommentHasBeenDeleted] = useState(false);
 
   useEffect(() => {
+    setCommentHasBeenDeleted(false);
     setCommentsIsLoading(true);
     getCommentsByReviewId(props.params.review_id).then((res) => {
-      setCurrentComments(res);
+      const sortedResponse = sortAndOrderArrayOfObjects(res, props.currentCommentsSortBy, props.currentCommentsOrder);
+      setCurrentComments(sortedResponse);
       setCommentsIsLoading(false);
     })
     .catch((err) => {
       setCommentsIsLoading(false);
       console.log(err);
     })
-  },[props.params.review_id, props.newCommentCount])
-
-  useEffect(() => {
-    setCommentHasBeenDeleted(false);
-    setCurrentComments((prevCurrentComments) => {
-      const newCurrentComments = sortAndOrderArrayOfObjects(prevCurrentComments, props.currentCommentsSortBy, props.currentCommentsOrder);
-      return newCurrentComments;
-    })
-  }, [commentHasBeenDeleted, props.currentCommentsSortBy, props.currentCommentsOrder])
+  },[commentHasBeenDeleted, props.params.review_id, props.newCommentCount, props.currentCommentsSortBy, props.currentCommentsOrder])
 
   function removeComment(event) {
     deleteComment(event.target.value).then((res) => {
