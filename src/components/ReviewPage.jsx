@@ -20,16 +20,26 @@ function ReviewPage () {
     getReviewById(params.review_id).then((res) => {
       setCurrentReview(res);
       setReviewDisplayIsLoading(false);
-    }).catch((err) => {console.log(err)});
-  }, [params.review_id, newCommentCount])
+      setIsNetworkErrorReviewPage({});
+    }).catch((err) => {
+      if (err.message === "Network Error") {
+        setIsNetworkErrorReviewPage({review: true});
+      }
+    });
+  }, [params.review_id, newCommentCount, setIsNetworkErrorReviewPage])
 
   return (
     <section className={currentReview ? "review-page " + currentReview.category : "review-page"}>
       <ReviewDisplay params={params} reviewDisplayIsLoading={reviewDisplayIsLoading} currentReview={currentReview} isNetworkErrorReviewPage={isNetworkErrorReviewPage} setIsNetworkErrorReviewPage={setIsNetworkErrorReviewPage}/>
-      {currentReview && <h3 className="comments-count">This review has {currentReview.comment_count} comment{currentReview.comment_count !== 1 ? 's' : null}.</h3>}
-      <NewComment params={params} setNewCommentCount={setNewCommentCount} isNetworkErrorReviewPage={isNetworkErrorReviewPage} setIsNetworkErrorReviewPage={setIsNetworkErrorReviewPage}/>
-      {(currentReview && currentReview.comment_count > 1) ? <SortComments setCurrentCommentsSortBy={setCurrentCommentsSortBy} setCurrentCommentsOrder={setCurrentCommentsOrder} /> : null}
-      <DisplayComments params={params} currentCommentsSortBy={currentCommentsSortBy} currentCommentsOrder={currentCommentsOrder} newCommentCount={newCommentCount} setNewCommentCount={setNewCommentCount} isNetworkErrorReviewPage={isNetworkErrorReviewPage} setIsNetworkErrorReviewPage={setIsNetworkErrorReviewPage}/>
+      {currentReview ?
+        <>
+          <h3 className="comments-count">This review has {currentReview.comment_count} comment{currentReview.comment_count !== 1 ? 's' : null}.</h3>
+          <NewComment params={params} setNewCommentCount={setNewCommentCount} isNetworkErrorReviewPage={isNetworkErrorReviewPage} setIsNetworkErrorReviewPage={setIsNetworkErrorReviewPage}/>
+          {currentReview.comment_count > 1 ? <SortComments setCurrentCommentsSortBy={setCurrentCommentsSortBy} setCurrentCommentsOrder={setCurrentCommentsOrder} /> : null}
+          <DisplayComments params={params} currentCommentsSortBy={currentCommentsSortBy} currentCommentsOrder={currentCommentsOrder} newCommentCount={newCommentCount} setNewCommentCount={setNewCommentCount} isNetworkErrorReviewPage={isNetworkErrorReviewPage} setIsNetworkErrorReviewPage={setIsNetworkErrorReviewPage}/>
+        </>
+        : null
+      }
     </section>);
 }
 

@@ -37,7 +37,8 @@ function ReviewDisplay (props) {
 
   return (
     <section className="review-display">
-      {props.reviewDisplayIsLoading ? <p className="loading">loading...</p> : null}
+      {props.isNetworkErrorReviewPage.review && <p className="error-message">Network Error. Are you connected to the internet?</p>}
+      {(!props.isNetworkErrorReviewPage.review && props.reviewDisplayIsLoading) ? <p className="loading">loading...</p> : null}
       { props.currentReview ?
       <>
         <img className="review-image-on-review-page" src={props.currentReview.review_img_url} alt={props.currentReview.title} /><br/>
