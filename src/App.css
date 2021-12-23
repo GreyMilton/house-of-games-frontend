@@ -51,7 +51,6 @@
 #header {
   display: flex;
   justify-content: space-between;
-  /* border: solid green; */
   align-items: center
 }
 
@@ -80,7 +79,6 @@
 #header button {
   color: white;
   cursor:pointer;
-  /* background-color: rgb(164, 33, 182); */
   background-color: #666666;
   padding: 3px 8px;
   border-width: 0px;
