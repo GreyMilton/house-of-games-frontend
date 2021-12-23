@@ -242,6 +242,11 @@ h3 {
   font-size: 14px;
 }
 
+.new-comment-container {
+  padding-top: 1px;
+  background-color: white;
+}
+
 .new-comment {
   /* background-color: white; */
   padding: 20px 0px;

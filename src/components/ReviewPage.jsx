@@ -13,6 +13,7 @@ function ReviewPage () {
   const [reviewDisplayIsLoading, setReviewDisplayIsLoading] = useState(true);
   const params = useParams();
   const [newCommentCount, setNewCommentCount] = useState(0);
+  const [isNetworkErrorReviewPage, setIsNetworkErrorReviewPage] = useState({});
 
   useEffect(() => {
     setReviewDisplayIsLoading(true);
@@ -24,11 +25,11 @@ function ReviewPage () {
 
   return (
     <section className={currentReview ? "review-page " + currentReview.category : "review-page"}>
-      <ReviewDisplay params={params} reviewDisplayIsLoading={reviewDisplayIsLoading} currentReview={currentReview} />
+      <ReviewDisplay params={params} reviewDisplayIsLoading={reviewDisplayIsLoading} currentReview={currentReview} isNetworkErrorReviewPage={isNetworkErrorReviewPage} setIsNetworkErrorReviewPage={setIsNetworkErrorReviewPage}/>
       {currentReview && <h3 className="comments-count">This review has {currentReview.comment_count} comment{currentReview.comment_count !== 1 ? 's' : null}.</h3>}
-      <NewComment params={params} setNewCommentCount={setNewCommentCount}/>
-      {(currentReview && currentReview.comment_count > 1) || newCommentCount > 0 ? <SortComments setCurrentCommentsSortBy={setCurrentCommentsSortBy} setCurrentCommentsOrder={setCurrentCommentsOrder} /> : null}
-      <DisplayComments params={params} currentCommentsSortBy={currentCommentsSortBy} currentCommentsOrder={currentCommentsOrder} newCommentCount={newCommentCount} setNewCommentCount={setNewCommentCount}/>
+      <NewComment params={params} setNewCommentCount={setNewCommentCount} isNetworkErrorReviewPage={isNetworkErrorReviewPage} setIsNetworkErrorReviewPage={setIsNetworkErrorReviewPage}/>
+      {(currentReview && currentReview.comment_count > 1) ? <SortComments setCurrentCommentsSortBy={setCurrentCommentsSortBy} setCurrentCommentsOrder={setCurrentCommentsOrder} /> : null}
+      <DisplayComments params={params} currentCommentsSortBy={currentCommentsSortBy} currentCommentsOrder={currentCommentsOrder} newCommentCount={newCommentCount} setNewCommentCount={setNewCommentCount} isNetworkErrorReviewPage={isNetworkErrorReviewPage} setIsNetworkErrorReviewPage={setIsNetworkErrorReviewPage}/>
     </section>);
 }
 

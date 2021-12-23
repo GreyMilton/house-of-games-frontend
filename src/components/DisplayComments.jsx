@@ -3,49 +3,54 @@ import { deleteComment, getCommentsByReviewId } from "../utils/api"
 import { sortAndOrderArrayOfObjects } from "../utils/array-utils"
 import { UserContext } from "../contexts/user-context"
 
-function DisplayComments (props) {
+function DisplayComments ({ params, currentCommentsSortBy, currentCommentsOrder, newCommentCount, setNewCommentCount, isNetworkErrorReviewPage, setIsNetworkErrorReviewPage }) {
   const { currentUser } = useContext(UserContext)
   const [currentComments, setCurrentComments] = useState([]);
   const [commentsIsLoading, setCommentsIsLoading] = useState(true);
   const [triggerRerender, setTriggerRerender] = useState(0);
-  const [isCommentsNetworkError, setIsCommentsNetworkError] = useState(false);
 
   useEffect(() => {
     setCommentsIsLoading(true);
-    getCommentsByReviewId(props.params.review_id).then((res) => {
-      const sortedResponse = sortAndOrderArrayOfObjects(res, props.currentCommentsSortBy, props.currentCommentsOrder);
+    getCommentsByReviewId(params.review_id).then((res) => {
+      const sortedResponse = sortAndOrderArrayOfObjects(res, currentCommentsSortBy, currentCommentsOrder);
       setCurrentComments(sortedResponse);
       setCommentsIsLoading(false);
-      setIsCommentsNetworkError(false);
+      setIsNetworkErrorReviewPage({});
     })
     .catch((err) => {
       setCommentsIsLoading(false);
       if (err.response && err.response.data.msg === "No comments found") {
         setCurrentComments([]);
-        setIsCommentsNetworkError(false);
+        setIsNetworkErrorReviewPage({});
       } else if (err.message === "Network Error") {
-        setIsCommentsNetworkError(true);
+        setIsNetworkErrorReviewPage({comments: true});
       }
       
     })
-  },[props.params.review_id, props.newCommentCount, props.currentCommentsSortBy, props.currentCommentsOrder, triggerRerender])
+  },[params.review_id, newCommentCount, currentCommentsSortBy, currentCommentsOrder, triggerRerender, setIsNetworkErrorReviewPage])
 
   function removeComment(event) {
     setCommentsIsLoading(true);
     deleteComment(event.target.value).then((res) => {
-      props.setNewCommentCount(prevCommentCount => prevCommentCount - 1);
+      setNewCommentCount(prevCommentCount => prevCommentCount - 1);
       setCommentsIsLoading(false);
-      setIsCommentsNetworkError(false);
+      setIsNetworkErrorReviewPage({});
     }).catch((err) => {
       if (err.response && err.response.data.msg === "Comment not found") {
         setTriggerRerender(prevState => prevState + 1);
-        setIsCommentsNetworkError(false);
+        setIsNetworkErrorReviewPage({});
       } else if (err.message === "Network Error") {
         setCommentsIsLoading(false);
-        setIsCommentsNetworkError(true);
+        setIsNetworkErrorReviewPage(prevState => {
+          const newObject = { ...prevState }
+          newObject.comments = true;
+          return newObject;
+        });
       }
     })
   }
+
+  // NOTE: The commented-out code in this file is the logic needed for buttons to vote on comments. As I do not yet have the required backend functionality to implement this, I have commented it out.
 
   // const [additionalVotes, setAdditionalVotes] = useState({});
   // const [hasIncrementedVote, setHasIncrementedVote] = useState({});
@@ -97,7 +102,7 @@ function DisplayComments (props) {
 
   return (
     <section className="display-comments">
-      {isCommentsNetworkError && <p className="error-message">Network Error. Are you connected to the internet?</p>}
+      {isNetworkErrorReviewPage.comments && <p className="error-message">Network Error. Are you connected to the internet?</p>}
       {commentsIsLoading && <p>loading...</p>}
       {currentComments.length > 0 ? currentComments.map((comment) => {
         return (
