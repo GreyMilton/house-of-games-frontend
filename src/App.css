@@ -40,8 +40,8 @@
     margin: 8px;
   }
   #header button {
-    float: right;
     margin: 0px 8px 0px;
+    align-self: flex-end;
   }
   .display-reviews {
     grid-template-columns: 50% 50%;

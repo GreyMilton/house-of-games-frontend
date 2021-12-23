@@ -11,6 +11,7 @@ function Header () {
   function logOut () {
     setMostRecentUser(currentUser);
     setCurrentUser(null);
+    navigate('/login');
   }
 
   function logIn() {
@@ -29,7 +30,7 @@ function Header () {
         {currentUser ? 
             <>
               <p className="username-display">Hi {currentUser}!</p>
-              <Link to="/login"><button onClick={logOut}>Log out</button></Link>
+              <button onClick={logOut}>Log out</button>
             </>
           :
             <>
