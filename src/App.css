@@ -193,19 +193,11 @@
 }
 
 .review-page {
-  /* border: solid pink; */
   margin: 11px 0px 0px 0px;
-  /* background-color: rgb(217, 252, 217); */
 }
-
-/* .review-display-container {
-  background-color: tomato;
-} */
 
 .review-display {
   padding: 24px 7%;
-  /* border: solid thistle; */
-  /* background-color: white; */
 }
 
 .review-display button{
@@ -214,21 +206,16 @@
   height: 24px;
   color: white;
   cursor:pointer;
-  /* background-color: rgb(164, 33, 182); */
   background-color: #666666;
-  /* padding: 3px 8px; */
   border-width: 0px;
   border-style: solid;
-  /* border-color: rgb(118, 118, 118); */
   border-radius: 12px;
   font-size: 14px;
   font-weight: bold;
 }
 
 .comments-count {
-  /* background-color: white; */
   margin: 0px 0px 6px;
-  /* border: solid yellowgreen; */
 }
 
 h3 {
@@ -243,10 +230,8 @@ h3 {
 }
 
 .new-comment {
-  /* background-color: white; */
   padding: 20px 0px;
   margin: 0px;
-  /* border: solid thistle; */
   background-color: rgb(241, 241, 241);
 }
 
@@ -258,7 +243,6 @@ h3 {
   margin: 0px 1px;
   color: white;
   cursor:pointer;
-  /* background-color: rgb(164, 33, 182); */
   background-color: #666666;
   padding: 3px 8px;
   border-width: 0px;
@@ -273,7 +257,6 @@ h3 {
   padding: 15px 0px 5px;
   background-color: white;
   margin: 0px;
-  /* border: solid mediumaquamarine; */
 }
 
 label {
@@ -287,7 +270,6 @@ label {
 }
 
 .comment-card {
-  /* border: solid green; */
   padding: 2px;
   margin: 6px;
   border-radius: 4px;
@@ -300,12 +282,9 @@ label {
   height: 24px;
   color: white;
   cursor:pointer;
-  /* background-color: rgb(164, 33, 182); */
   background-color: #666666;
-  /* padding: 3px 8px; */
   border-width: 0px;
   border-style: solid;
-  /* border-color: rgb(118, 118, 118); */
   border-radius: 12px;
   font-size: 14px;
   font-weight: bold;
