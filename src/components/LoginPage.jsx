@@ -24,17 +24,14 @@ function LoginPage () {
     } else {
       setUsernameIsValid(false);
     }
-
   }
-
 
   function handleLogInClick() {
     if (mostRecentUser) {
       setCurrentUser(mostRecentUser);
       navigate('/')
     } else {
-      setCurrentUser('hello!');
-      navigate('/lkjlkjlkjlkjlj')
+      navigate('/login')
     }
   }
 
@@ -52,17 +49,17 @@ function LoginPage () {
       { currentUser ?
         <>
           <p>You are currently logged in as {currentUser}</p>
-          <button onClick={handleLogOutClick}>Log Out</button>
+          <button className="log-in-page-button" onClick={handleLogOutClick}>Log out</button>
         </>
         :
         <>
           { mostRecentUser ?
           <>
             <p>Welcome back {mostRecentUser}! Would you like to log in?</p>
-            <button to="/" onClick={handleLogInClick}>Log in</button>
+            <button className="log-in-page-button" onClick={handleLogInClick}>Log in</button>
             <br />
             <p>Or would you like to log in with a different account?</p>
-            <button onClick={handleNewUserClick}>Log in with a different account</button>
+            <button className="log-in-page-button" onClick={handleNewUserClick}>Log in with a different account</button>
           </>
           :
           <>
@@ -73,7 +70,7 @@ function LoginPage () {
               </label>
               <input className="username-submit" type="submit" value="Log In" />
             </form>
-            {!usernameIsValid && <p>Username not found</p>}
+            {!usernameIsValid && <p className="username-not-found-error">Username not found</p>}
           </>
           }
         </>

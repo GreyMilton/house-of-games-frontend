@@ -367,3 +367,35 @@ label {
 .error-message {
   color: #b91515;
 }
+
+.log-in-page-button {
+  margin: 0px 2px;
+  color: white;
+  cursor:pointer;
+  background-color: #666666;
+  padding: 3px 8px;
+  border-width: 0px;
+  border-style: solid;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.username-submit {
+  margin: 0px 2px;
+  color: white;
+  cursor:pointer;
+  background-color: #666666;
+  padding: 3px 8px;
+  border-width: 0px;
+  border-style: solid;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.username-not-found-error {
+  color: #b91515;
+  font-size: 14px;
+  font-style: italic;
+}
