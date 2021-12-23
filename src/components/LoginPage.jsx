@@ -59,20 +59,21 @@ function LoginPage () {
           { mostRecentUser ?
           <>
             <p>Welcome back {mostRecentUser}! Would you like to log in?</p>
-            <button to="/" onClick={handleLogInClick}>Log In</button>
+            <button to="/" onClick={handleLogInClick}>Log in</button>
             <br />
-            <button onClick={handleNewUserClick}>New User</button>
+            <p>Or would you like to log in with a different account?</p>
+            <button onClick={handleNewUserClick}>Log in with a different account</button>
           </>
           :
           <>
-            <p>Please log in with a valid username</p>
+            <p>Please enter your username below</p>
             <form onSubmit={submitUsernameForLogin}>
               <label className="username-input-label">Username:
                 <input className="username-input" type="text" onChange={trackUsername}/>
               </label>
               <input className="username-submit" type="submit" value="Log In" />
             </form>
-            {!usernameIsValid && <p>Username in not valid!</p>}
+            {!usernameIsValid && <p>Username not found</p>}
           </>
           }
         </>
