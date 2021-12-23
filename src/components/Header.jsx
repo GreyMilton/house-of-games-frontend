@@ -15,12 +15,7 @@ function Header () {
   }
 
   function logIn() {
-    if (mostRecentUser) {
-      setCurrentUser(mostRecentUser);
-      navigate('/');
-    } else {
-      navigate('/login');
-    }
+    navigate('/login');
   }
 
   return (
@@ -34,7 +29,7 @@ function Header () {
             </>
           :
             <>
-              {mostRecentUser && <p className="username-display">Hi {mostRecentUser}!</p>}
+              {mostRecentUser ? <p className="username-display">Hi {mostRecentUser}!</p> : <p className="username-display">Hi there!</p> }
               <button onClick={logIn}>Log in</button>
             </>
         }
