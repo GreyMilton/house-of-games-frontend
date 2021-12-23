@@ -11,11 +11,11 @@ function Nav (props) {
 
   useEffect(() => {
     if (windowDimensions.width < 284) setNavNumber(1);
-    else if (windowDimensions.width < 355) setNavNumber(2);
-    else if (windowDimensions.width < 440) setNavNumber(3);
-    else if (windowDimensions.width < 535) setNavNumber(4);
-    else if (windowDimensions.width < 610) setNavNumber(5);
-    else if (windowDimensions.width < 700) setNavNumber(6);
+    else if (windowDimensions.width < 380) setNavNumber(2);
+    else if (windowDimensions.width < 463) setNavNumber(3);
+    else if (windowDimensions.width < 590) setNavNumber(4);
+    else if (windowDimensions.width < 715) setNavNumber(5);
+    else if (windowDimensions.width < 892) setNavNumber(6);
     else setNavNumber(8);
   }, [windowDimensions])
 
