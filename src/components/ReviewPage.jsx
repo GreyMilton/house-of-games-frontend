@@ -20,15 +20,15 @@ function ReviewPage () {
       setCurrentReview(res);
       setReviewDisplayIsLoading(false);
     }).catch((err) => {console.log(err)});
-  }, [params.review_id])
+  }, [params.review_id, newCommentCount])
 
   return (
     <section className={currentReview ? "review-page " + currentReview.category : "review-page"}>
       <ReviewDisplay params={params} reviewDisplayIsLoading={reviewDisplayIsLoading} currentReview={currentReview} />
       {currentReview && <h3 className="comments-count">This review has {currentReview.comment_count} comment{currentReview.comment_count !== 1 ? 's' : null}.</h3>}
       <NewComment params={params} setNewCommentCount={setNewCommentCount}/>
-      {(currentReview && currentReview.comment_count > 1) ? <SortComments setCurrentCommentsSortBy={setCurrentCommentsSortBy} setCurrentCommentsOrder={setCurrentCommentsOrder} /> : null}
-      <DisplayComments params={params} currentCommentsSortBy={currentCommentsSortBy} currentCommentsOrder={currentCommentsOrder} newCommentCount={newCommentCount}/>
+      {(currentReview && currentReview.comment_count > 1) || newCommentCount > 0 ? <SortComments setCurrentCommentsSortBy={setCurrentCommentsSortBy} setCurrentCommentsOrder={setCurrentCommentsOrder} /> : null}
+      <DisplayComments params={params} currentCommentsSortBy={currentCommentsSortBy} currentCommentsOrder={currentCommentsOrder} newCommentCount={newCommentCount} setNewCommentCount={setNewCommentCount}/>
     </section>);
 }
 

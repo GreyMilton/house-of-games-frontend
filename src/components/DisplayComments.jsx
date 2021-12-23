@@ -5,7 +5,7 @@ import { UserContext } from "../contexts/user-context"
 
 function DisplayComments (props) {
   const { currentUser } = useContext(UserContext)
-  const [currentComments, setCurrentComments] = useState();
+  const [currentComments, setCurrentComments] = useState([]);
   const [commentsIsLoading, setCommentsIsLoading] = useState(true);
   const [commentHasBeenDeleted, setCommentHasBeenDeleted] = useState(false);
 
@@ -19,13 +19,16 @@ function DisplayComments (props) {
     })
     .catch((err) => {
       setCommentsIsLoading(false);
-      console.log(err);
+      if (err.response.data.msg === "No comments found") {
+        setCurrentComments([]);
+      }
     })
   },[commentHasBeenDeleted, props.params.review_id, props.newCommentCount, props.currentCommentsSortBy, props.currentCommentsOrder])
 
   function removeComment(event) {
     deleteComment(event.target.value).then((res) => {
       setCommentHasBeenDeleted(true);
+      props.setNewCommentCount(prevCommentCount => prevCommentCount - 1);
     }).catch((err) => {
       console.log(err);
     })
@@ -82,7 +85,7 @@ function DisplayComments (props) {
   return (
     <section className="display-comments">
       {commentsIsLoading && <p>loading...</p>}
-      {currentComments && currentComments.map((comment) => {
+      {currentComments.length > 0 ? currentComments.map((comment) => {
         return (
           <section key={comment.comment_id} className="comment-card">
             <h4>{comment.author}{( comment.author === currentUser) && " (you)"}</h4>
@@ -93,7 +96,10 @@ function DisplayComments (props) {
             <p></p>
           </section>
         );
-      })}
+      })
+      :
+      null
+    }
     </section>);
 }
 export default DisplayComments ;

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user-context";
 import { useContext, useState } from "react";
 
@@ -81,10 +81,3 @@ function LoginPage () {
 }
 
 export default LoginPage ;
-
-{/* <form onSubmit={submitNewComment}>
-<label className="new-comment-label">New comment:
-  <input className="new-comment-input" type="text" onChange={trackNewComment} />
-</label>
-<input className="new-comment-submit" type="submit" value="Submit" />
-</form> */}
