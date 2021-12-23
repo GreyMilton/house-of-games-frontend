@@ -267,7 +267,7 @@
   padding: 24px 7%;
 }
 
-.review-display button{
+.voting-button {
   margin: 0px 2px;
   width: 24px;
   height: 24px;
@@ -283,12 +283,27 @@
   transition: 0.3s;
 }
 
-.review-display button:hover{
+.voting-button:hover{
   opacity: 1;
 }
 
-.review-display button:active {
+.voting-button:active {
   background-color: white;
+}
+
+.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  margin: 0px 2px;
+  width: 24px;
+  height: 24px;
+  color: white;
+  background-color: #666666;
+  border-width: 0px;
+  border-style: solid;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .comments-count {
@@ -513,4 +528,8 @@ label {
 
 .click-through-link:active {
   color: white;
+}
+
+.login-page {
+  margin: 15px;
 }

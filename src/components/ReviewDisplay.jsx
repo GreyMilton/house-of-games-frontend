@@ -1,37 +1,44 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { patchReview } from "../utils/api";
 import { capitaliseAndReplaceDashes } from "../utils/string-utils"
+import { UserContext } from "../contexts/user-context";
 
 function ReviewDisplay (props) {
+  const { currentUser } = useContext(UserContext)
   const [newVotesCount, setNewVotesCount] = useState(0);
   const [hasIncrementedVote, setHasIncrementedVote] = useState(false);
   const [hasDecrementedVote, setHasDecrementedVote] = useState(false);
+  const [showCantVoteMessage, setShowCantVoteMessage] = useState();
 
   function addVotesToReview (event) {
     event.preventDefault();
-    if (!hasIncrementedVote) {
-      setHasIncrementedVote(true);
-      setNewVotesCount((prevCount) => {
-        return prevCount + 1;
-      });
-      patchReview(props.params.review_id, 1)
-        .catch ((err) => {
-        console.log(err);
+    if (currentUser) {
+      if (!hasIncrementedVote) {
+        setHasIncrementedVote(true);
+        setNewVotesCount((prevCount) => {
+          return prevCount + 1;
         });
+        patchReview(props.params.review_id, 1)
+          .catch ((err) => {
+          console.log(err);
+          });
+      }
     }
   }
 
   function subtractVotesFromReview (event) {
     event.preventDefault();
-    if (!hasDecrementedVote) {
-      setHasDecrementedVote(true);
-      setNewVotesCount((prevCount) => {
-        return prevCount - 1;
-      });
-      patchReview(props.params.review_id, -1)
-        .catch ((err) => {
-        console.log(err);
+    if (currentUser) {
+      if (!hasDecrementedVote) {
+        setHasDecrementedVote(true);
+        setNewVotesCount((prevCount) => {
+          return prevCount - 1;
         });
+        patchReview(props.params.review_id, -1)
+          .catch ((err) => {
+          console.log(err);
+          });
+      }
     }
   }
 
@@ -48,7 +55,7 @@ function ReviewDisplay (props) {
         <p className="date-and-time">{new Date(props.currentReview.created_at).toString().substring(0, 21) + " " + new Date(props.currentReview.created_at).toString().substring(34)}</p>
         <p><strong>Game designer:</strong> {props.currentReview.designer}</p>
         <p><strong>Category:</strong> {capitaliseAndReplaceDashes(props.currentReview.category)}</p>
-        <p><strong>Votes:</strong> {props.currentReview.votes + newVotesCount} <button onClick={addVotesToReview}>+</button><button onClick={subtractVotesFromReview}>-</button></p>
+        <p><strong>Votes:</strong> {props.currentReview.votes + newVotesCount} <button className={currentUser ? "voting-button" : "disabled"} onClick={addVotesToReview}>+</button><button className={currentUser ? "voting-button" : "disabled"} onClick={subtractVotesFromReview}>-</button></p>
       </>
       : null}
     </section>);
