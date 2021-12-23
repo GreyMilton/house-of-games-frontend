@@ -10,7 +10,7 @@ import LoginPage from './components/LoginPage';
 import ReviewPage from './components/ReviewPage';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState("cooljmessy")
+  const [currentUser, setCurrentUser] = useState();
   const [mostRecentUser, setMostRecentUser] = useState();
   const [allCategories, setAllCategories] = useState();
   const [dropdownCategoryIsClicked, setDropdownCategoryIsClicked] = useState(false);

@@ -68,7 +68,7 @@ function LoginPage () {
               <label className="username-input-label">Username:
                 <input className="username-input" type="text" onChange={trackUsername}/>
               </label>
-              <input className="username-submit" type="submit" value="Log In" />
+              <input className="log-in-page-button" type="submit" value="Log In" />
             </form>
             {!usernameIsValid && <p className="username-not-found-error">Username not found</p>}
           </>
