@@ -4,28 +4,32 @@ import { getReviews } from "../utils/api";
 import { sortAndOrderArrayOfObjectsByLengthOfGivenValue } from "../utils/array-utils";
 import { capitaliseAndReplaceDashes } from "../utils/string-utils";
 
-function DisplayReviews (props) {
+function DisplayReviews ({currentLocation, currentSortBy, currentOrder, setIsNetworkErrorCategoryPage, setDropdownCategoryIsClicked}) {
 
   const [currentReviews, setCurrentReviews] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true)
-    getReviews(props.currentLocation, props.currentSortBy, props.currentOrder).then((res) => {
+    getReviews(currentLocation, currentSortBy, currentOrder).then((res) => {
       setIsLoading(false);
-      if (props.currentSortBy !== "review_body") setCurrentReviews(res);
+      setIsNetworkErrorCategoryPage(false);
+      if (currentSortBy !== "review_body") setCurrentReviews(res);
       else {
-        const arraySortedByLength = sortAndOrderArrayOfObjectsByLengthOfGivenValue(res, props.currentSortBy, props.currentOrder);
+        const arraySortedByLength = sortAndOrderArrayOfObjectsByLengthOfGivenValue(res, currentSortBy, currentOrder);
         setCurrentReviews(arraySortedByLength);
       }
     }).catch((err) => {
       console.log(err);
       setIsLoading(false);
+      if (err.message === "Network Error") {
+        setIsNetworkErrorCategoryPage(true);
+      }
     })
-  }, [props.currentLocation, props.currentSortBy, props.currentOrder]);
+  }, [currentLocation, currentSortBy, currentOrder, setIsNetworkErrorCategoryPage]);
 
   function handleClick() {
-    props.setDropdownCategoryIsClicked(false);
+    setDropdownCategoryIsClicked(false);
   }
 
   return (

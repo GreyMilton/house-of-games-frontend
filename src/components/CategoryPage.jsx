@@ -8,6 +8,7 @@ function CategoryPage (props) {
   const [currentOrder, setCurrentOrder] = useState("desc");
   const location = useLocation();
   const [currentLocation, setCurrentLocation] = useState(location.pathname);
+  const [isNetworkErrorCategoryPage, setIsNetworkErrorCategoryPage] = useState(false);
 
   useEffect(() => {
     setCurrentLocation(location.pathname);
@@ -15,8 +16,14 @@ function CategoryPage (props) {
 
   return (
     <section className="category-page">
-      <SortReviews currentLocation={currentLocation} setCurrentSortBy={setCurrentSortBy} setCurrentOrder={setCurrentOrder} />
-      <DisplayReviews currentLocation={currentLocation} currentSortBy={currentSortBy} currentOrder={currentOrder} setDropdownCategoryIsClicked={props.setDropdownCategoryIsClicked}/>
+      {isNetworkErrorCategoryPage
+        ? <p className="error-message">Network Error</p>
+        :
+        <>
+          <SortReviews currentLocation={currentLocation} setCurrentSortBy={setCurrentSortBy} setCurrentOrder={setCurrentOrder} />
+          <DisplayReviews currentLocation={currentLocation} currentSortBy={currentSortBy} currentOrder={currentOrder} setDropdownCategoryIsClicked={props.setDropdownCategoryIsClicked} setIsNetworkErrorCategoryPage={setIsNetworkErrorCategoryPage}/>
+        </>
+      }
     </section>);
 }
 
