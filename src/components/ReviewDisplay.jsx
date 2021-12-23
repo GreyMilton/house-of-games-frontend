@@ -37,7 +37,7 @@ function ReviewDisplay (props) {
 
   return (
     <section className="review-display">
-      {props.isNetworkErrorReviewPage.review && <p className="error-message">Network Error. Are you connected to the internet?</p>}
+      {props.isNetworkErrorReviewPage.review && <p className="error-message">Network Error</p>}
       {(!props.isNetworkErrorReviewPage.review && props.reviewDisplayIsLoading) ? <p className="loading">loading...</p> : null}
       { props.currentReview ?
       <>

@@ -102,7 +102,7 @@ function DisplayComments ({ params, currentCommentsSortBy, currentCommentsOrder,
 
   return (
     <section className="display-comments">
-      {isNetworkErrorReviewPage.comments && <p className="error-message">Network Error. Are you connected to the internet?</p>}
+      {isNetworkErrorReviewPage.comments && <p className="error-message">Network Error</p>}
       {commentsIsLoading && <p>loading...</p>}
       {currentComments.length > 0 ? currentComments.map((comment) => {
         return (

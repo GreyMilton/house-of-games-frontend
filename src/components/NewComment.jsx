@@ -40,7 +40,7 @@ function NewComment (props) {
 
   return (
     <section className="new-comment-container">
-      {props.isNetworkErrorReviewPage.newComment && <p className="error-message">Network Error. Are you connected to the internet?</p>}
+      {props.isNetworkErrorReviewPage.newComment && <p className="error-message">Network Error</p>}
       {newCommentIsBlank && <p className="error-message">Your new comment is empty</p>}
       <section className="new-comment">
         <form onSubmit={submitNewComment}>
