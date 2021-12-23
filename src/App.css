@@ -384,3 +384,7 @@ label {
   padding: 2px;
   margin: 2px
 }
+
+.error-message {
+  color: #b91515;
+}
