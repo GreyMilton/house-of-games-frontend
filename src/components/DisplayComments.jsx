@@ -7,10 +7,8 @@ function DisplayComments (props) {
   const { currentUser } = useContext(UserContext)
   const [currentComments, setCurrentComments] = useState([]);
   const [commentsIsLoading, setCommentsIsLoading] = useState(true);
-  const [commentHasBeenDeleted, setCommentHasBeenDeleted] = useState(false);
 
   useEffect(() => {
-    setCommentHasBeenDeleted(false);
     setCommentsIsLoading(true);
     getCommentsByReviewId(props.params.review_id).then((res) => {
       const sortedResponse = sortAndOrderArrayOfObjects(res, props.currentCommentsSortBy, props.currentCommentsOrder);
@@ -23,11 +21,10 @@ function DisplayComments (props) {
         setCurrentComments([]);
       }
     })
-  },[commentHasBeenDeleted, props.params.review_id, props.newCommentCount, props.currentCommentsSortBy, props.currentCommentsOrder])
+  },[props.params.review_id, props.newCommentCount, props.currentCommentsSortBy, props.currentCommentsOrder])
 
   function removeComment(event) {
     deleteComment(event.target.value).then((res) => {
-      setCommentHasBeenDeleted(true);
       props.setNewCommentCount(prevCommentCount => prevCommentCount - 1);
     }).catch((err) => {
       console.log(err);
