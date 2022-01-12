@@ -39,10 +39,10 @@ function DisplayReviews ({currentLocation, currentSortBy, currentOrder, setIsNet
       { currentReviews ? currentReviews.map((review) => {
         return (
           <section key={review.review_id} className={"review-card " + review.category}>
-            <Link onClick={handleClick} to={`/reviews/${review.review_id}`}>
+            <Link onClick={handleClick} to={`/review/${review.review_id}`}>
               <h2 className="click-through">{review.title}</h2>
             </Link>
-            <Link onClick={handleClick} to={`/reviews/${review.review_id}`}>
+            <Link onClick={handleClick} to={`/review/${review.review_id}`}>
               <p className="click-through">{review.review_body.length < 199 ? review.review_body : review.review_body.substring(0, 100) + "..."}</p>
             </Link>
             <p><strong>Reviewer:</strong> {review.owner}</p>
@@ -51,10 +51,10 @@ function DisplayReviews ({currentLocation, currentSortBy, currentOrder, setIsNet
             <p><strong>Category:</strong> {capitaliseAndReplaceDashes(review.category)}</p>
             <p><strong>Comments:</strong> {review.comment_count}</p>
             <p><strong>Votes:</strong> {review.votes}</p>
-            <Link  className="click-through-img" onClick={handleClick} to={`/reviews/${review.review_id}`}>
+            <Link  className="click-through-img" onClick={handleClick} to={`/review/${review.review_id}`}>
               <img className="review-image" src={review.review_img_url} alt={review.title} /><br/>
             </Link>
-            <Link onClick={handleClick} to={`/reviews/${review.review_id}`}>
+            <Link onClick={handleClick} to={`/review/${review.review_id}`}>
               <p className="click-through-link">Click to see full review</p>
             </Link>
           </section >

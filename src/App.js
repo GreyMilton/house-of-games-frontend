@@ -8,6 +8,7 @@ import Nav from './components/Nav';
 import CategoryPage from './components/CategoryPage';
 import LoginPage from './components/LoginPage';
 import ReviewPage from './components/ReviewPage';
+import BadURLPage from './components/BadURLPage';
 
 function App() {
   const [currentUser, setCurrentUser] = useState();
@@ -32,12 +33,13 @@ function App() {
           <Route path="/" element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
           <Route path="/reviews/all" element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/reviews/:review_id" element={<ReviewPage />} />
+          <Route path="/review/:review_id" element={<ReviewPage />} />
           {allCategories && allCategories.map((category, index) => {
             return (
               <Route path={`reviews/${category.slug}`} key={index} element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
             );
           })}
+          <Route path="*" element={<BadURLPage/>} />
         </ Routes>
       </div>
     </UserContext.Provider>
