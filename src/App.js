@@ -9,6 +9,7 @@ import CategoryPage from './components/CategoryPage';
 import LoginPage from './components/LoginPage';
 import ReviewPage from './components/ReviewPage';
 import BadURLPage from './components/BadURLPage';
+import BadCategoryInURLPage from './components/BadCategoryInURLPage';
 
 function App() {
   const [currentUser, setCurrentUser] = useState();
@@ -39,6 +40,7 @@ function App() {
               <Route path={`reviews/${category.slug}`} key={index} element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
             );
           })}
+          <Route path="reviews/*" element={<BadCategoryInURLPage/>} />
           <Route path="*" element={<BadURLPage/>} />
         </ Routes>
       </div>
