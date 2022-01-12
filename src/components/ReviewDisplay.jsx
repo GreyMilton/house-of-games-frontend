@@ -44,6 +44,16 @@ function ReviewDisplay (props) {
 
   return (
     <section className="review-display">
+      {props.reviewRequestIsBad &&
+        <>
+          <h2>400</h2>
+          <p>Bad request: review id not in the required format.</p>
+        </>}
+      {props.reviewWasNotFound &&
+        <>
+          <h2>404</h2>
+          <p>Review not found.</p>
+        </>}
       {props.isNetworkErrorReviewPage.review && <p className="error-message">Network Error</p>}
       {(!props.isNetworkErrorReviewPage.review && props.reviewDisplayIsLoading) ? <p className="loading">loading...</p> : null}
       { props.currentReview ?
