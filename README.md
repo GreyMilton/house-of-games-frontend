@@ -4,7 +4,7 @@
 
 This is the git repository (repo) of a *portfolio project* by me, Grey Milton. It was created in late November 2021 while undertaking a Full-Stack JavaScript Bootcamp with [Northcoders](https://northcoders.com) (UK).
 
-The project is a frontend web app, and was created primarily using React.js, JavaScript, CSS and Axios. It was actually created to use with a pre-existing API that I also built in the bootcamp: an API of board games and reviews, that mimicks a real world backend service (such as reddit).
+*The project is a frontend web app*, and was created primarily using React.js, JavaScript, CSS and Axios. It was actually created to use with a pre-existing API that I also built in the bootcamp: an API of board games and reviews, that mimicks a real world backend service (such as reddit).
 
 <br>
 <br>
