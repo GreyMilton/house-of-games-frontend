@@ -90,9 +90,9 @@ npm install
 
 In the project directory, simply run:
 
-```
+`````
 npm start
-```
+`````
 
 This will start running the app in the development mode. If you make and save any edits, the app will refresh with changes. You will also see any lint errors in the console.
 
