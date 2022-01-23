@@ -29,20 +29,26 @@ function App() {
     <UserContext.Provider value={{ currentUser, setCurrentUser, mostRecentUser, setMostRecentUser }}>
       <div className="App">
         <Header />
-        <Nav allCategories={allCategories} dropdownCategoryIsClicked={dropdownCategoryIsClicked} setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>
-        <Routes>
-          <Route path="/" element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
-          <Route path="/reviews/all" element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/review/:review_id" element={<ReviewPage />} />
-          {allCategories && allCategories.map((category, index) => {
-            return (
-              <Route path={`reviews/${category.slug}`} key={index} element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
-            );
-          })}
-          <Route path="reviews/*" element={<BadCategoryInURLPage/>} />
-          <Route path="*" element={<BadURLPage/>} />
-        </ Routes>
+        {allCategories ?
+        <>
+          <Nav allCategories={allCategories} dropdownCategoryIsClicked={dropdownCategoryIsClicked} setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>
+          <Routes>
+            <Route path="/" element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
+            <Route path="/reviews/all" element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/review/:review_id" element={<ReviewPage />} />
+            {allCategories && allCategories.map((category, index) => {
+              return (
+                <Route path={`reviews/${category.slug}`} key={index} element={<CategoryPage setDropdownCategoryIsClicked={setDropdownCategoryIsClicked}/>} />
+              );
+            })}
+            <Route path="reviews/*" element={<BadCategoryInURLPage/>} />
+            <Route path="*" element={<BadURLPage/>} />
+          </ Routes>
+        </>
+         :
+         <p>Loading...</p>
+         }
       </div>
     </UserContext.Provider>
   );
