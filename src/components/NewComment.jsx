@@ -48,7 +48,7 @@ function NewComment (props) {
     <section className="new-comment-container">
       { notLoggedInError && <p className="error-message">You must be logged in to add a new comment</p>}
       {props.isNetworkErrorReviewPage.newComment && <p className="error-message">Network Error</p>}
-      {newCommentIsBlank && <p className="error-message">Your new comment is empty</p>}
+      {newCommentIsBlank && <p className="error-message">Your new comment is empty. You cannot post an empty comment.</p>}
       <section className="new-comment">
         <form onSubmit={submitNewComment}>
           <label className="new-comment-label">New comment:
