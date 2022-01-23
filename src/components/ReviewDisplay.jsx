@@ -8,7 +8,7 @@ function ReviewDisplay (props) {
   const [newVotesCount, setNewVotesCount] = useState(0);
   const [hasIncrementedVote, setHasIncrementedVote] = useState(false);
   const [hasDecrementedVote, setHasDecrementedVote] = useState(false);
-  const [showCantVoteMessage, setShowCantVoteMessage] = useState();
+  // const [showCantVoteMessage, setShowCantVoteMessage] = useState();
 
   function addVotesToReview (event) {
     event.preventDefault();
