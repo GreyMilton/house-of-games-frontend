@@ -1,4 +1,4 @@
-exports.sortAndOrderArrayOfObjects = (array, key, order) => {
+export function sortAndOrderArrayOfObjects(array, key, order) {
   if (!array) return [];
 
   const newArray = array.map((object)=> {
@@ -22,7 +22,7 @@ exports.sortAndOrderArrayOfObjects = (array, key, order) => {
   return newArray;
 };
 
-exports.sortAndOrderArrayOfObjectsByLengthOfGivenValue = (array, key, order) => {
+export function sortAndOrderArrayOfObjectsByLengthOfGivenValue (array, key, order) {
   if (!array) return [];
 
   const newArray = array.map((object)=> {
