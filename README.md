@@ -17,7 +17,7 @@ I have deployed the web app online with Netlify. You can [access it here](https:
 
 ## Links to the API it uses:
 
-As mentioned above, this web app accesses an API I created for an earlier project. You can find [the API's repo on GitHub here](https://github.com/GreyMilton/house-of-games-api), and you can find the [live hosted API here](https://house-of-games-api.herokuapp.com).
+As mentioned above, this web app accesses an API I created for an earlier project. You can find [the API's repo on GitHub here](https://github.com/GreyMilton/house-of-games-api), and you can find the [live hosted API here](https://grey-nc-api.onrender.com/).
 
 ## What does the Web App do?
 

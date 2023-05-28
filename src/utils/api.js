@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const houseOfGamesApi = axios.create({
-  baseURL: "https://house-of-games-api.herokuapp.com/api"
+  baseURL: "https://grey-nc-api.onrender.com/api"
 });
 
 export const getCategories = () => {
